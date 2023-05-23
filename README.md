@@ -1,12 +1,13 @@
 ### Hi there I'm Trent. 👋 Welcome to my repositories!
 
-##### My interests include Generative AI, Language Design, FPGA's, Writing Chess Engines, Compiler Design and Implementation, Kernel Development, High Speed Networking for MMO's and Live Teleconferencing, Robotics, Embedded Systems, Industrial Automation, Drumming, Math, and Skydiving.
+##### My interests include Generative AI, Language Design, FPGA's, Writing Chess Engines, Compiler Design and Implementation, Kernel Development, High Speed Networking for MMO's and Live Teleconferencing, Robotics, Embedded Systems, Industrial Automation, Paleontology, Drumming, Math, and Skydiving.
 
 
 - ♜ I’m currently working on MicroChess, a full featured embedded chess engine designed to use less than 2K of RAM! Also check out my other Chess Engines: JavaChess, CPlusPlusChess and JavscriptChess!
 - 🌱 I’m currently learning Rust (again) along with the openAI API
 - 😄 Yes, the nickname Ripred came from the Overlander series
 - 📫 How to reach me: robotics@trentwyatt.com, https://reddit.com/user/ripred3
+- 👯 I’m looking for sponsors for 'Buffy the Pack Mule' my digital Fossil Hunting Robot and equipment carrier!
 
 <!--
 **ripred/ripred** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
