@@ -4,7 +4,7 @@
 
 
 - ♜ I’m currently working on MicroChess, a full featured embedded chess engine designed to use less than 2K of RAM! Also check out my other Chess Engines: JavaChess, CPlusPlusChess and JavscriptChess!
-- 🌱 I’m currently learning Rust (again)
+- 🌱 I’m currently learning Rust (again) along with the openAI API
 - 😄 Yes, the nickname Ripred came from the Overlander series
 
 <!--
