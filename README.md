@@ -8,7 +8,7 @@
 - 🌱 I’m currently learning Go (again) along with the openAI API
 - 😄 Yes, the nickname Ripred came from the Overlander series
 - 📫 How to reach me: robotics@trentwyatt.com, https://reddit.com/user/ripred3
-- 👯 I’m looking for sponsors for 'Buffy the Pack Mule' my digital Fossil Hunting Robot and equipment carrier!
+- 🦕 I’m looking for sponsors for 'Buffy the Pack Mule' my digital Fossil Hunting Robot and equipment carrier!
 
 <!--
 **ripred/ripred** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
