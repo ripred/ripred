@@ -24,3 +24,6 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ripred&langs_count=5&layout=compact)](https://github.com/ripred/github-readme-stats)
+<!-- ![Ripred's GitHub stats](https://github-readme-stats.vercel.app/api?username=ripred&show_icons=true&theme=radical) -->
