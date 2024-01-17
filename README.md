@@ -3,8 +3,9 @@
 ##### My interests include Generative AI, Language Design, FPGA's, Writing Chess Engines, Compiler Design and Implementation, Kernel Development, High Speed Networking for MMO's and Live Teleconferencing, Robotics, Embedded Systems, Industrial Automation, Paleontology, Drumming, Math, and Skydiving.
 
 
+- 🖥 Created [Bang Library and Platform!](https://github.com/ripred/Bang) which gives any Arduino the ability to run shell commands on the host machine and return the results to the Arduino!
 - ⨍[x] Created new [Smooth Exponential Moving Average Library](https://github.com/ripred/Smooth)!
-- ♜ I’m currently working on MicroChess, a full featured embedded chess engine designed to use less than 2K of RAM! Also check out my other Chess Engines: JavaChess, CPlusPlusChess and JavscriptChess!
+- ♜ I finished MicroChess, a full featured embedded chess engine designed to use less than 2K of RAM! Also check out my other Chess Engines: JavaChess, CPlusPlusChess and JavscriptChess!
 - 🌱 I’m currently learning Go (again) along with the openAI API
 - 😄 Yes, the nickname Ripred came from the Overlander series
 - 📫 How to reach me: robotics@trentwyatt.com, https://reddit.com/user/ripred3
