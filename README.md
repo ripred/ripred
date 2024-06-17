@@ -7,7 +7,7 @@
 - ⨍[x] Created new [Smooth Exponential Moving Average Library](https://github.com/ripred/Smooth)!
 - ♜ Finished [MicroChess](https://github.com/ripred/MicroChess), a full featured embedded chess engine designed to use less than 2K of RAM! Also check out my other Chess Engines:[JavaChess](https://github.com/ripred/JavaChess), [CPlusPlusChess](https://github.com/ripred/CPlusPlusChess) and [JavscriptChess](https://github.com/ripred/JavaScriptChess)!
 - 🌱 Currently learning Go (again) along with the openAI API
-- 😄 Yes, the nickname Ripred came from the Overlander series
+- 😄 Yes, the nickname Ripred came from The Underland Chronicles series
 - 📫 How to reach me: robotics@trentwyatt.com, https://reddit.com/user/ripred3
 - 🦕 I’m looking for sponsors for 'Buffy the Pack Mule' - my digital Fossil Hunting Robot and equipment carrier!
 
