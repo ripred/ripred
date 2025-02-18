@@ -1,7 +1,17 @@
-const { Octokit } = require("octokit"); // Corrected require statement
+// Use dynamic import() to load Octokit (ESM)
 const fs = require('fs');
 
 async function main() {
+  let Octokit; // Declare Octokit outside the import scope
+
+  try {
+    const octokitModule = await import('octokit'); // Dynamic import
+    Octokit = octokitModule.Octokit; // Access Octokit class from the module
+  } catch (err) {
+    console.error("Error importing Octokit:", err);
+    return; // Stop if import fails
+  }
+
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
