@@ -16,7 +16,7 @@ async function main() {
         auth: process.env.GITHUB_TOKEN,
     });
 
-    await new Promise(resolve => setTimeout(resolve, 50)); // ADDED: Short delay after Octokit instantiation
+    await new Promise(resolve => setTimeout(resolve, 1000)); // ADDED: 1-second delay after Octokit instantiation
 
     const username = 'ripred';
     const reposPerPage = 100;
