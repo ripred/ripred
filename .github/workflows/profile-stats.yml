@@ -1,4 +1,4 @@
-name: Update Profile Stats (Debugging) # Changed workflow name for clarity
+name: Update Profile Stats (Debugging) # Workflow name for clarity
 
 on:
   schedule:
@@ -20,9 +20,13 @@ jobs:
         with:
           node-version: 18  # Or your preferred Node.js version
 
+      - name: Initialize npm (if needed) # Added explicit npm init
+        run: npm init -y
+        working-directory: ${{ github.workspace }}
+
       - name: Install Dependencies
-        working-directory: ${{ github.workspace }} # Explicitly set working directory
-        run: npm install -v octokit # Add -v for verbose output
+        working-directory: ${{ github.workspace }} # Explicit working directory
+        run: npm install --package-lock=false -v octokit # More robust install command and verbose output
 
       - name: List files after npm install
         run: ls -al node_modules # List files in node_modules after installation
