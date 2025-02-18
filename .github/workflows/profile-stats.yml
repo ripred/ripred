@@ -1,88 +1,38 @@
-name: Update Profile Stats (Debugging - npm/yarn Tests) # More descriptive workflow name
+name: Update Profile Stats (Debugging - npm/yarn Tests)
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
-  workflow_dispatch: # Allows manual triggering from the Actions tab
+    - cron: '0 0 * * *' # Runs daily at 00:00 UTC
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   update-stats:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Profile Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Or your preferred Node.js version
+          node-version: '18' # Or try '20' if '18' still fails, but keep '18' for now for consistency
 
-      # --- Test 1: Basic npm install (no flags) ---
-      - name: Initialize npm (Test 1)
+      - name: Initialize npm project (if needed - might not be strictly required anymore but keeps setup consistent)
         run: npm init -y
-        working-directory: ${{ github.workspace }}
 
-      - name: Install Dependencies (Test 1 - npm basic)
-        id: npm-install-basic
-        working-directory: ${{ github.workspace }}
-        timeout-minutes: 5 # Add a timeout to see if it hangs
-        run: npm install octokit
+      - name: Install octokit v3.2.0
+        run: npm install octokit@3.2.0  # CHANGED: Install specific older version
 
-      - name: List files after npm install (Test 1)
-        if: steps.npm-install-basic.outcome == 'success'
-        run: ls -al node_modules
+      - name: List node_modules to verify installation (debugging)
+        run: ls -al node_modules/octokit
 
-      - name: Run script if npm install (Test 1) succeeded
-        if: steps.npm-install-basic.outcome == 'success'
+      - name: Run script to update README
+        run: node .github/scripts/update-readme.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node .github/scripts/update-readme.js
 
-      # --- Test 2: npm install after creating node_modules dir ---
-      - name: Create node_modules directory (Test 2)
-        run: mkdir node_modules
-        working-directory: ${{ github.workspace }}
-
-      - name: Install Dependencies (Test 2 - npm after mkdir)
-        id: npm-install-mkdir
-        working-directory: ${{ github.workspace }}
-        timeout-minutes: 5 # Add a timeout
-        run: npm install --package-lock=false -v octokit
-
-      - name: List files after npm install (Test 2)
-        if: steps.npm-install-mkdir.outcome == 'success'
-        run: ls -al node_modules
-
-      - name: Run script if npm install (Test 2) succeeded
-        if: steps.npm-install-mkdir.outcome == 'success'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node .github/scripts/update-readme.js
-
-      # --- Test 3: yarn install ---
-      - name: Install Dependencies (Test 3 - yarn)
-        id: yarn-install
-        working-directory: ${{ github.workspace }}
-        timeout-minutes: 5 # Add a timeout
-        run: yarn install octokit
-
-      - name: List files after yarn install (Test 3)
-        if: steps.yarn-install.outcome == 'success'
-        run: ls -al node_modules
-
-      - name: Run script if yarn install (Test 3) succeeded
-        if: steps.yarn-install.outcome == 'success'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node .github/scripts/update-readme.js
-
-      # --- Final List Files (regardless of install success) ---
-      - name: Final List files in workspace
-        run: ls -al
-
-      - name: Commit and Push Changes (only if script ran successfully in any test)
-        if: steps.npm-install-basic.outcome == 'success' || steps.npm-install-mkdir.outcome == 'success' || steps.yarn-install.outcome == 'success'
+      - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: update repository stats in profile README"
+          commit_message: "docs(readme): update repository stats"
           file_pattern: README.md
