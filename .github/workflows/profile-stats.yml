@@ -1,4 +1,4 @@
-name: Update Profile Stats
+name: Update Profile Stats (Debugging) # Changed workflow name for clarity
 
 on:
   schedule:
@@ -12,6 +12,9 @@ jobs:
       - name: Checkout Profile Repository
         uses: actions/checkout@v3
 
+      - name: List files after Checkout
+        run: ls -al # List files in the default workspace after checkout
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -19,7 +22,10 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ${{ github.workspace }} # Explicitly set working directory
-        run: npm install octokit
+        run: npm install -v octokit # Add -v for verbose output
+
+      - name: List files after npm install
+        run: ls -al node_modules # List files in node_modules after installation
 
       - name: Get Repository Stats and Update README
         env:
@@ -31,4 +37,3 @@ jobs:
         with:
           commit_message: "docs: update repository stats in profile README"
           file_pattern: README.md
-
