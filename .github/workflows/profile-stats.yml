@@ -18,6 +18,7 @@ jobs:
           node-version: 18  # Or your preferred Node.js version
 
       - name: Install Dependencies
+        working-directory: ${{ github.workspace }} # Explicitly set working directory
         run: npm install octokit
 
       - name: Get Repository Stats and Update README
