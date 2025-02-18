@@ -1,10 +1,43 @@
-name: Minimal Test Workflow
+name: Update Profile Stats (Debugging) # Workflow name for clarity
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch: # Allows manual triggering from the Actions tab
 
 jobs:
-  test-job:
+  update-stats:
     runs-on: ubuntu-latest
     steps:
-      - name: Simple Echo Step
-        run: echo "Hello from minimal workflow!"
+      - name: Checkout Profile Repository
+        uses: actions/checkout@v3
+
+      - name: List files after Checkout
+        run: ls -al # List files in the default workspace after checkout
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Or your preferred Node.js version
+
+      - name: Initialize npm (if needed) # Added explicit npm init
+        run: npm init -y
+        working-directory: ${{ github.workspace }}
+
+      - name: Install Dependencies
+        working-directory: ${{ github.workspace }} # Explicit working directory
+        run: npm install --package-lock=false -v octokit # More robust install command and verbose output
+
+      - name: List files after npm install
+        run: ls -al node_modules # List files in node_modules after installation
+
+      - name: Get Repository Stats and Update README
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/update-readme.js
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update repository stats in profile README"
+          file_pattern: README.md
