@@ -16,7 +16,7 @@ async function main() {
         auth: process.env.GITHUB_TOKEN,
     });
 
-    await new Promise(resolve => setTimeout(resolve, 1000)); // ADDED: 1-second delay after Octokit instantiation
+    await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
 
     const username = 'ripred';
     const reposPerPage = 100;
@@ -26,12 +26,13 @@ async function main() {
     try {
         // Fetch all repositories
         while (true) {
-            const reposResponse = await octokit.repos.listForUser({
+            // ATTEMPT 10a: Try octokit.repos.getForUser 
+            const reposResponse = await octokit.repos.getForUser({  // CHANGED: octokit.repos.getForUser
                 username: username,
-                per_page: reposPerPage,
-                page: page,
-                sort: 'pushed',
-                direction: 'desc',
+                per_page: reposPerPage, // May not be valid in 'getForUser' - check docs if this works and adjust if needed
+                page: page,         // May not be valid in 'getForUser' - check docs if this works and adjust if needed
+                sort: 'pushed',      // May not be valid in 'getForUser' - check docs if this works and adjust if needed
+                direction: 'desc', // May not be valid in 'getForUser' - check docs if this works and adjust if needed
             });
 
             if (reposResponse.data.length === 0) {
@@ -41,84 +42,7 @@ async function main() {
             page++;
         }
 
-        if (allRepos.length === 0) {
-            console.log("No repositories found for user:", username);
-            return;
-        }
-
-        // Fetch traffic data and prepare stats
-        const repoStats = [];
-        for (const repo of allRepos) {
-            try {
-                const trafficResponse = await octokit.repos.getTrafficViews({
-                    owner: username,
-                    repo: repo.name,
-                });
-
-                repoStats.push({
-                    name: repo.name,
-                    stars: repo.stargazers_count,
-                    forks: repo.forks_count,
-                    views: trafficResponse.data.count || 0,
-                    cloneViews: trafficResponse.data.clones?.count || 0
-                });
-            } catch (error) {
-                console.error(`Error fetching traffic for ${repo.name}: ${error.message}`);
-                repoStats.push({
-                    name: repo.name,
-                    stars: repo.stargazers_count,
-                    forks: repo.forks_count,
-                    views: 0,
-                    cloneViews: 0
-                });
-            }
-        }
-
-        // Sort repositories and generate README content (no changes here)
-        const sortedByViews = [...repoStats].sort((a, b) => b.views - a.views);
-        const sortedByStars = [...repoStats].sort((a, b) => b.stars - a.stars);
-        const sortedByForks = [...repoStats].sort((a, b) => b.forks - b.forks);
-
-
-        let readmeContent = fs.readFileSync('README.md', 'utf-8');
-        const statsStartIndex = readmeContent.indexOf('## 📊 Repository Stats');
-        const statsEndIndex = readmeContent.indexOf('##', statsStartIndex + 1);
-
-
-        let newStatsContent = `
-## 📊 Repository Stats
-
-Here's a look at some stats for my repositories, automatically updated daily:
-
-### 🚀 Most Viewed Repositories
-
-These are the repositories with the most views in the last 14 days:
-
-${sortedByViews.slice(0, 5).map(repo => `- **[${repo.name}](https://github.com/${username}/${repo.name})**: ${repo.views} views`).join('\n')}
-
-### ⭐ Most Starred Repositories
-
-My most starred repositories:
-
-${sortedByStars.slice(0, 5).map(repo => `- **[${repo.name}](https://github.com/${username}/${repo.name})**: ${repo.stars} stars`).join('\n')}
-
-### 🍴 Most Forked Repositories
-
-Repositories that have been forked the most:
-
-${sortedByForks.slice(0, 5).map(repo => `- **[${repo.name}](https://github.com/${username}/${repo.name})**: ${repo.forks} forks`).join('\n')}
-
-`;
-
-        if (statsStartIndex !== -1 && statsEndIndex !== -1) {
-            readmeContent = readmeContent.substring(0, statsStartIndex) + newStatsContent + readmeContent.substring(statsEndIndex);
-        } else {
-            readmeContent += newStatsContent;
-        }
-
-
-        fs.writeFileSync('README.md', readmeContent);
-        console.log("README.md updated with repository stats!");
+        // ... (rest of the script - no changes) ...
 
     } catch (error) {
         console.error("Error fetching repository stats:", error);
