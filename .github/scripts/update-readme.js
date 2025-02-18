@@ -5,6 +5,7 @@ async function main() {
 
     try {
         const octokitModule = await import('octokit');
+        console.log("Octokit Module:", octokitModule); // ADDED THIS LINE FOR DEBUGGING
         Octokit = octokitModule.Octokit;
     } catch (err) {
         console.error("Error importing Octokit:", err);
