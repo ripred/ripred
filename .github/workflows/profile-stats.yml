@@ -1,4 +1,4 @@
-name: Update Profile Stats (Debugging) # Workflow name for clarity
+name: Update Profile Stats (Debugging - npm/yarn Tests) # More descriptive workflow name
 
 on:
   schedule:
@@ -12,31 +12,76 @@ jobs:
       - name: Checkout Profile Repository
         uses: actions/checkout@v3
 
-      - name: List files after Checkout
-        run: ls -al # List files in the default workspace after checkout
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18  # Or your preferred Node.js version
 
-      - name: Initialize npm (if needed) # Added explicit npm init
+      # --- Test 1: Basic npm install (no flags) ---
+      - name: Initialize npm (Test 1)
         run: npm init -y
         working-directory: ${{ github.workspace }}
 
-      - name: Install Dependencies
-        working-directory: ${{ github.workspace }} # Explicit working directory
-        run: npm install --package-lock=false -v octokit # More robust install command and verbose output
+      - name: Install Dependencies (Test 1 - npm basic)
+        id: npm-install-basic
+        working-directory: ${{ github.workspace }}
+        timeout-minutes: 5 # Add a timeout to see if it hangs
+        run: npm install octokit
 
-      - name: List files after npm install
-        run: ls -al node_modules # List files in node_modules after installation
+      - name: List files after npm install (Test 1)
+        if: steps.npm-install-basic.outcome == 'success'
+        run: ls -al node_modules
 
-      - name: Get Repository Stats and Update README
+      - name: Run script if npm install (Test 1) succeeded
+        if: steps.npm-install-basic.outcome == 'success'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node .github/scripts/update-readme.js
 
-      - name: Commit and Push Changes
+      # --- Test 2: npm install after creating node_modules dir ---
+      - name: Create node_modules directory (Test 2)
+        run: mkdir node_modules
+        working-directory: ${{ github.workspace }}
+
+      - name: Install Dependencies (Test 2 - npm after mkdir)
+        id: npm-install-mkdir
+        working-directory: ${{ github.workspace }}
+        timeout-minutes: 5 # Add a timeout
+        run: npm install --package-lock=false -v octokit
+
+      - name: List files after npm install (Test 2)
+        if: steps.npm-install-mkdir.outcome == 'success'
+        run: ls -al node_modules
+
+      - name: Run script if npm install (Test 2) succeeded
+        if: steps.npm-install-mkdir.outcome == 'success'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/update-readme.js
+
+      # --- Test 3: yarn install ---
+      - name: Install Dependencies (Test 3 - yarn)
+        id: yarn-install
+        working-directory: ${{ github.workspace }}
+        timeout-minutes: 5 # Add a timeout
+        run: yarn install octokit
+
+      - name: List files after yarn install (Test 3)
+        if: steps.yarn-install.outcome == 'success'
+        run: ls -al node_modules
+
+      - name: Run script if yarn install (Test 3) succeeded
+        if: steps.yarn-install.outcome == 'success'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/update-readme.js
+
+      # --- Final List Files (regardless of install success) ---
+      - name: Final List files in workspace
+        run: ls -al
+
+      - name: Commit and Push Changes (only if script ran successfully in any test)
+        if: steps.npm-install-basic.outcome == 'success' || steps.npm-install-mkdir.outcome == 'success' || steps.yarn-install.outcome == 'success'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update repository stats in profile README"
