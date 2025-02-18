@@ -5,7 +5,7 @@ async function main() {
 
     try {
         const octokitModule = await import('octokit');
-        console.log("Octokit Module:", octokitModule); // ADDED THIS LINE FOR DEBUGGING
+        console.log("Octokit Module:", octokitModule);
         Octokit = octokitModule.Octokit;
     } catch (err) {
         console.error("Error importing Octokit:", err);
@@ -16,6 +16,8 @@ async function main() {
         auth: process.env.GITHUB_TOKEN,
     });
 
+    await new Promise(resolve => setTimeout(resolve, 50)); // ADDED: Short delay after Octokit instantiation
+
     const username = 'ripred';
     const reposPerPage = 100;
     let allRepos = [];
@@ -24,7 +26,7 @@ async function main() {
     try {
         // Fetch all repositories
         while (true) {
-            const reposResponse = await octokit.repos.listForUser({ //  <- REMOVED .rest here
+            const reposResponse = await octokit.repos.listForUser({
                 username: username,
                 per_page: reposPerPage,
                 page: page,
@@ -48,7 +50,7 @@ async function main() {
         const repoStats = [];
         for (const repo of allRepos) {
             try {
-                const trafficResponse = await octokit.repos.getTrafficViews({ //  <- REMOVED .rest here
+                const trafficResponse = await octokit.repos.getTrafficViews({
                     owner: username,
                     repo: repo.name,
                 });
@@ -79,8 +81,8 @@ async function main() {
 
 
         let readmeContent = fs.readFileSync('README.md', 'utf-8');
-        const statsStartIndex = readmeContent.indexOf('## 📊 Repository Stats'); // Example marker - adjust if needed
-        const statsEndIndex = readmeContent.indexOf('##', statsStartIndex + 1); // Example marker - adjust if needed
+        const statsStartIndex = readmeContent.indexOf('## 📊 Repository Stats');
+        const statsEndIndex = readmeContent.indexOf('##', statsStartIndex + 1);
 
 
         let newStatsContent = `
