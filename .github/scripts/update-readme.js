@@ -1,16 +1,7 @@
 const fs = require('fs');
+const Octokit = require('octokit').Octokit; // CHANGED: CommonJS require
 
 async function main() {
-    let Octokit;
-
-    try {
-        const octokitModule = await import('octokit');
-        console.log("Octokit Module:", octokitModule);
-        Octokit = octokitModule.Octokit;
-    } catch (err) {
-        console.error("Error importing Octokit:", err);
-        return;
-    }
 
     const octokit = new Octokit({
         auth: process.env.GITHUB_TOKEN,
@@ -19,33 +10,59 @@ async function main() {
     await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
 
     const username = 'ripred';
-    const reposPerPage = 100;
-    let allRepos = [];
-    let page = 1;
+    const repoName = 'ripred'; // CHANGED: Focus on a single repo
 
     try {
-        // Fetch all repositories
-        while (true) {
-            // ATTEMPT 10a: Try octokit.repos.getForUser 
-            const reposResponse = await octokit.repos.getForUser({  // CHANGED: octokit.repos.getForUser
-                username: username,
-                per_page: reposPerPage, // May not be valid in 'getForUser' - check docs if this works and adjust if needed
-                page: page,         // May not be valid in 'getForUser' - check docs if this works and adjust if needed
-                sort: 'pushed',      // May not be valid in 'getForUser' - check docs if this works and adjust if needed
-                direction: 'desc', // May not be valid in 'getForUser' - check docs if this works and adjust if needed
-            });
+        // ATTEMPT 10b: Get data for a single, known repository (ripred/ripred)
+        const repoResponse = await octokit.repos.get({ // CHANGED: octokit.repos.get (for single repo)
+            owner: username,
+            repo: repoName,
+        });
 
-            if (reposResponse.data.length === 0) {
-                break;
-            }
-            allRepos = allRepos.concat(reposResponse.data);
-            page++;
+        console.log("Repository Data:", repoResponse.data); // Log the single repo data
+
+        const repoStats = [{ // Create stats for this single repo
+            name: repoResponse.data.name,
+            stars: repoResponse.data.stargazers_count,
+            forks: repoResponse.data.forks_count,
+            views: 0, // Traffic data might be harder with older versions, skip for now
+            cloneViews: 0
+        }];
+
+
+        // Sort repositories and generate README content (no changes here) - will now be based on single repo stats
+        const sortedByViews = [...repoStats].sort((a, b) => b.views - a.views); // Sort might be less relevant now, but keep it
+        const sortedByStars = [...repoStats].sort((a, b) => b.stars - a.stars);
+        const sortedByForks = [...repoStats].sort((a, b) => b.forks - b.forks);
+
+
+        let readmeContent = fs.readFileSync('README.md', 'utf-8');
+        const statsStartIndex = readmeContent.indexOf('## 📊 Repository Stats');
+        const statsEndIndex = readmeContent.indexOf('##', statsStartIndex + 1);
+
+
+        let newStatsContent = `
+## 📊 Repository Stats (Attempt 10b - Single Repo Test)
+
+Stats for the **${repoName}** repository, automatically updated daily:
+
+### ⭐ Stars: ${repoStats[0].stars}
+### 🍴 Forks: ${repoStats[0].forks}
+`; // Simplified stats output for single repo test
+
+
+        if (statsStartIndex !== -1 && statsEndIndex !== -1) {
+            readmeContent = readmeContent.substring(0, statsStartIndex) + newStatsContent + readmeContent.substring(statsEndIndex);
+        } else {
+            readmeContent += newStatsContent;
         }
 
-        // ... (rest of the script - no changes) ...
+
+        fs.writeFileSync('README.md', readmeContent);
+        console.log("README.md updated with repository stats (Attempt 10b - Single Repo)!");
 
     } catch (error) {
-        console.error("Error fetching repository stats:", error);
+        console.error("Error fetching repository stats (Attempt 10b - Single Repo):", error);
     }
 }
 
