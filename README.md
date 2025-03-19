@@ -2,7 +2,8 @@
 
 ##### My interests include Generative AI, Language Design, FPGA's, Writing Chess Engines, Compiler Design and Implementation, Kernel Development, High Speed Networking for MMO's and Live Teleconferencing, Robotics, Embedded Systems, Industrial Automation, Paleontology, Drumming, Math, and Skydiving.
 
-
+- 🖥 Created [new github-traffic reporting app](https://github.com/ripred/github-traffic) which gives a full report on your repository traffic, views, stars, forks, clones etc.
+- ⨍[x] Created new [Minimax Library Complete with 4 working games: Checkers, Othello, Connect Four, and Gomuku](https://github.com/ripred/Minimax)!
 - 🖥 Created [Bang Library and Platform!](https://github.com/ripred/Bang) which gives any microcontroller the ability to run shell commands on the host machine and return the results back to the embedded microcontroller!
 - ⨍[x] Created new [Smooth Exponential Moving Average Library](https://github.com/ripred/Smooth)!
 - ♜ Finished [MicroChess](https://github.com/ripred/MicroChess), a full featured embedded chess engine designed to use less than 2K of RAM! Also check out my other Chess Engines:[JavaChess](https://github.com/ripred/JavaChess), [CPlusPlusChess](https://github.com/ripred/CPlusPlusChess) and [JavscriptChess](https://github.com/ripred/JavaScriptChess)!
