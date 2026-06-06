@@ -6,17 +6,34 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime
+from html import escape
 
 
 OWNER = os.environ.get("GITHUB_OWNER", "ripred")
 TOKEN = os.environ.get("GITHUB_TOKEN")
 README_PATH = "README.md"
+LANGUAGE_SVG_PATH = "assets/top-languages.svg"
 START = "<!-- RECENT-PUBLIC-WORK:START -->"
 END = "<!-- RECENT-PUBLIC-WORK:END -->"
 EXCLUDED_REPOS = {".github", "ripred"}
 OWNED_PUBLIC_FORKS = {"Gately"}
 MAX_REPOS = 6
 MAX_DESCRIPTION_LENGTH = 140
+MAX_LANGUAGES = 6
+LANGUAGE_COLORS = {
+    "C": "#555555",
+    "C++": "#f34b7d",
+    "CMake": "#da3434",
+    "CSS": "#663399",
+    "HTML": "#e34c26",
+    "Java": "#b07219",
+    "JavaScript": "#f1e05a",
+    "Processing": "#0096d8",
+    "Python": "#3572a5",
+    "Rust": "#dea584",
+    "Shell": "#89e051",
+    "TypeScript": "#3178c6",
+}
 
 
 def github_get(path, query=None):
@@ -66,7 +83,7 @@ def format_description(value):
     return description
 
 
-def render_recent_work(repos):
+def public_profile_repositories(repos):
     safe_repos = []
     for repo in repos:
         name = repo.get("name", "")
@@ -81,6 +98,11 @@ def render_recent_work(repos):
         if repo.get("visibility") != "public":
             continue
         safe_repos.append(repo)
+    return safe_repos
+
+
+def render_recent_work(repos):
+    safe_repos = public_profile_repositories(repos)
 
     safe_repos.sort(key=lambda repo: parse_github_time(repo["pushed_at"]), reverse=True)
     lines = []
@@ -94,6 +116,101 @@ def render_recent_work(repos):
         lines.append("- No recent public repository activity found.")
 
     return "\n".join(lines)
+
+
+def fetch_language_totals(repos):
+    totals = {}
+    for repo in repos:
+        name = repo["name"]
+        try:
+            languages = github_get(f"/repos/{OWNER}/{name}/languages")
+        except (urllib.error.URLError, ValueError, KeyError) as error:
+            print(f"Skipping language stats for {name}: {error}", file=sys.stderr)
+            continue
+
+        for language, byte_count in languages.items():
+            totals[language] = totals.get(language, 0) + int(byte_count)
+    return totals
+
+
+def format_percent(value):
+    text = f"{value:.1f}"
+    if text.endswith(".0"):
+        text = text[:-2]
+    return f"{text}%"
+
+
+def render_language_svg(language_totals):
+    top_languages = sorted(language_totals.items(), key=lambda item: item[1], reverse=True)[:MAX_LANGUAGES]
+    width = 520
+    row_height = 28
+    height = 84 + max(1, len(top_languages)) * row_height
+    total = sum(language_totals.values())
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-labelledby="title desc" viewBox="0 0 {width} {height}">',
+        '<title id="title">Top public repository languages</title>',
+        '<desc id="desc">Language breakdown for public profile repositories.</desc>',
+        f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="6" fill="#ffffff" stroke="#d0d7de"/>',
+        '<text x="20" y="30" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="600">Top Public Repo Languages</text>',
+        '<text x="20" y="50" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">Owned public repositories plus maintained public forks</text>',
+    ]
+
+    if not top_languages or total == 0:
+        parts.extend(
+            [
+                '<text x="20" y="86" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">No language data found.</text>',
+                "</svg>",
+            ]
+        )
+        return "\n".join(parts)
+
+    chart_x = 20
+    chart_y = 66
+    chart_width = width - 40
+    offset = 0.0
+    parts.append(f'<rect x="{chart_x}" y="{chart_y}" width="{chart_width}" height="10" rx="5" fill="#eaeef2"/>')
+    for language, byte_count in top_languages:
+        segment_width = chart_width * byte_count / total
+        color = LANGUAGE_COLORS.get(language, "#6e7781")
+        parts.append(
+            f'<rect x="{chart_x + offset:.2f}" y="{chart_y}" width="{segment_width:.2f}" height="10" fill="{color}"/>'
+        )
+        offset += segment_width
+
+    for index, (language, byte_count) in enumerate(top_languages):
+        percent = format_percent(byte_count * 100 / total)
+        y = 98 + index * row_height
+        color = LANGUAGE_COLORS.get(language, "#6e7781")
+        parts.extend(
+            [
+                f'<circle cx="26" cy="{y - 5}" r="5" fill="{color}"/>',
+                f'<text x="40" y="{y}" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">{escape(language)}</text>',
+                f'<text x="{width - 20}" y="{y}" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">{percent}</text>',
+            ]
+        )
+
+    parts.append("</svg>")
+    return "\n".join(parts)
+
+
+def write_language_svg(repos):
+    safe_repos = public_profile_repositories(repos)
+    language_totals = fetch_language_totals(safe_repos)
+    svg = render_language_svg(language_totals)
+    os.makedirs(os.path.dirname(LANGUAGE_SVG_PATH), exist_ok=True)
+
+    current = None
+    if os.path.exists(LANGUAGE_SVG_PATH):
+        with open(LANGUAGE_SVG_PATH, "r", encoding="utf-8") as language_svg:
+            current = language_svg.read()
+
+    if svg != current:
+        with open(LANGUAGE_SVG_PATH, "w", encoding="utf-8") as language_svg:
+            language_svg.write(svg)
+            language_svg.write("\n")
+        return True
+    return False
 
 
 def update_readme(block):
@@ -116,12 +233,16 @@ def main():
     try:
         repos = public_repositories()
         block = render_recent_work(repos)
-        changed = update_readme(block)
+        readme_changed = update_readme(block)
+        languages_changed = write_language_svg(repos)
     except (urllib.error.URLError, RuntimeError, KeyError, ValueError) as error:
-        print(f"Failed to update recent public work: {error}", file=sys.stderr)
+        print(f"Failed to update profile content: {error}", file=sys.stderr)
         return 1
 
-    print("README.md updated." if changed else "README.md already current.")
+    if readme_changed or languages_changed:
+        print("Profile content updated.")
+    else:
+        print("Profile content already current.")
     return 0
 
 

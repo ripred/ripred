@@ -26,12 +26,12 @@ jobs:
 
       - name: Commit changes
         run: |
-          if git diff --quiet -- README.md; then
-            echo "No README changes."
+          if git diff --quiet -- README.md assets/top-languages.svg; then
+            echo "No profile content changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "Update recent public work"
+          git add README.md assets/top-languages.svg
+          git commit -m "Update profile content"
           git push
