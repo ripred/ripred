@@ -14,6 +14,7 @@ README_PATH = "README.md"
 START = "<!-- RECENT-PUBLIC-WORK:START -->"
 END = "<!-- RECENT-PUBLIC-WORK:END -->"
 EXCLUDED_REPOS = {".github", "ripred"}
+OWNED_PUBLIC_FORKS = {"Gately"}
 MAX_REPOS = 6
 MAX_DESCRIPTION_LENGTH = 140
 
@@ -77,7 +78,7 @@ def render_recent_work(repos):
             continue
         if repo.get("private") is not False:
             continue
-        if repo.get("fork") is True:
+        if repo.get("fork") is True and name not in OWNED_PUBLIC_FORKS:
             continue
         if repo.get("archived") is True:
             continue

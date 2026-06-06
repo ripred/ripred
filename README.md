@@ -21,12 +21,12 @@ I build Arduino libraries, embedded tools, chess engines, robotics projects, dev
 ## Recent Public Work
 
 <!-- RECENT-PUBLIC-WORK:START -->
+- [Gately](https://github.com/ripred/Gately) - Web-based interactive logic circuit simulator built with TypeScript. Updated 2026-06-06.
 - [python-nhl-api](https://github.com/ripred/python-nhl-api) - Python helpers and tests for exploring NHL API schedules, teams, people, games, and markup output. Updated 2026-06-06.
 - [LearningRust](https://github.com/ripred/LearningRust) - Learning the Rust programming language. Updated 2026-06-06.
 - [3d-animated-blockchain](https://github.com/ripred/3d-animated-blockchain) - Interactive Three.js 3D node-network simulation with configurable blockchain-style visuals and embeddable output. Updated 2026-06-06.
 - [ripred-euclid](https://github.com/ripred/ripred-euclid) - Turn based 2 player game or play against computer. Devvit game entry. Updated 2026-06-06.
 - [Arduino-Stuff](https://github.com/ripred/Arduino-Stuff) - All of my official Arduino libraries and many of my personal projects. Power management, Servo control, Chess engines, Animatronics, games,... Updated 2026-06-06.
-- [JavaChess](https://github.com/ripred/JavaChess) - 24-bit ANSI colored, console-based chess engine using Java. Optional multi-threaded AI using Minimax with alpha-beta pruning. Fully configu... Updated 2026-06-06.
 
 _Updated automatically from public GitHub repository metadata on 2026-06-06._
 <!-- RECENT-PUBLIC-WORK:END -->
