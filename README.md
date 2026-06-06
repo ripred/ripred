@@ -1,30 +1,20 @@
-### Hi there I'm Trent. 👋 Welcome to my repositories!
+### Hi there, I'm Trent. Welcome to my repositories.
 
-##### My interests include Generative AI, Language Design, FPGA's, Writing Chess Engines, Compiler Design and Implementation, Kernel Development, High Speed Networking for MMO's and Live Teleconferencing, Robotics, Embedded Systems, Industrial Automation, Paleontology, Drumming, Math, and Skydiving.
+I build Arduino libraries, embedded tools, chess engines, robotics projects, developer utilities, and the occasional game. My interests include language design, FPGAs, compiler design, kernel development, high-speed networking, embedded systems, industrial automation, paleontology, drumming, math, and skydiving.
 
-- 🖥 Created [new github-traffic reporting app](https://github.com/ripred/github-traffic) which gives a full report on your repository traffic, views, stars, forks, clones etc.
-- ⨍[x] Created new [Minimax Library Complete with 4 working games: Checkers, Othello, Connect Four, and Gomuku](https://github.com/ripred/Minimax)!
-- 🖥 Created [Bang Library and Platform!](https://github.com/ripred/Bang) which gives any microcontroller the ability to run shell commands on the host machine and return the results back to the embedded microcontroller!
-- ⨍[x] Created new [Smooth Exponential Moving Average Library](https://github.com/ripred/Smooth)!
-- ♜ Finished [MicroChess](https://github.com/ripred/MicroChess), a full featured embedded chess engine designed to use less than 2K of RAM! Also check out my other Chess Engines:[JavaChess](https://github.com/ripred/JavaChess), [CPlusPlusChess](https://github.com/ripred/CPlusPlusChess) and [JavscriptChess](https://github.com/ripred/JavaScriptChess)!
-- 🌱 Currently learning Go (again) along with the openAI API
-- 😄 Yes, the nickname Ripred came from The Underland Chronicles series
-- 📫 How to reach me: robotics@trentwyatt.com, https://reddit.com/user/ripred3
-- 🦕 I’m looking for sponsors for 'Buffy the Pack Mule' - my digital Fossil Hunting Robot and equipment carrier!
+## Highlighted Work
 
-<!--
-**ripred/ripred** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+- [CPUVolt](https://github.com/ripred/CPUVolt) - read processor Vcc and estimate battery capacity on ATmega-based Arduino projects without external components.
+- [Smooth](https://github.com/ripred/Smooth) - compact exponential moving averages with constant memory and runtime.
+- [BetterMenu](https://github.com/ripred/BetterMenu) - declarative, adapter-friendly menu infrastructure for embedded projects.
+- [MicroChess](https://github.com/ripred/MicroChess) - embedded chess engine designed to use less than 2K of RAM.
+- [Bang](https://github.com/ripred/Bang) - host-command bridge for microcontrollers that need a PC, Mac, or Linux machine to act as a service.
+- [github-traffic](https://github.com/ripred/github-traffic) - command-line reporting for repository traffic, views, stars, forks, and clones.
 
-Here are some ideas to get you started:
+## Current Notes
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- I write a lot of small libraries and experiments around Arduino, C++, Python, and game/search algorithms.
+- The nickname Ripred came from *The Underland Chronicles*.
+- I am looking for sponsors for Buffy the Pack Mule, my digital fossil-hunting robot and equipment carrier.
+
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ripred&langs_count=6&layout=compact)](https://github.com/ripred/github-readme-stats)
-<!-- ![Ripred's GitHub stats](https://github-readme-stats.vercel.app/api?username=ripred&show_icons=true&theme=radical) -->
