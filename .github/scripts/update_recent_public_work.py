@@ -5,7 +5,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime
 
 
 OWNER = os.environ.get("GITHUB_OWNER", "ripred")
@@ -57,10 +57,6 @@ def parse_github_time(value):
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
-def format_date(value):
-    return parse_github_time(value).strftime("%Y-%m-%d")
-
-
 def format_description(value):
     description = "Public repository." if not value else " ".join(value.split())
     if len(description) > MAX_DESCRIPTION_LENGTH:
@@ -92,15 +88,13 @@ def render_recent_work(repos):
         name = repo["name"]
         url = repo["html_url"]
         description = format_description(repo.get("description"))
-        pushed = format_date(repo["pushed_at"])
-        lines.append(f"- [{name}]({url}) - {description} Updated {pushed}.")
+        lines.append(f"- [{name}]({url}) - {description}")
 
     if not lines:
         lines.append("- No recent public repository activity found.")
 
-    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     lines.append(f"")
-    lines.append(f"_Updated automatically from public GitHub repository metadata on {generated_at}._")
+    lines.append(f"_Generated from public GitHub repository metadata._")
     return "\n".join(lines)
 
 
