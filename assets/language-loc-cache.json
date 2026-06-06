@@ -1,0 +1,324 @@
+{
+  "repos": {
+    "3d-animated-blockchain": {
+      "default_branch": "master",
+      "loc": {
+        "HTML": 1218
+      },
+      "revision": "72c9e094460193ab"
+    },
+    "Arduino-Project-Manager-GPT": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 488
+      },
+      "revision": "9d453dafb11b8706"
+    },
+    "Bang": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 1303,
+        "Python": 445
+      },
+      "revision": "3d779e7ec7450e49"
+    },
+    "BetterMenu": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 6049,
+        "HTML": 483,
+        "JavaScript": 6590
+      },
+      "revision": "4b0e8eeeeb343a5c"
+    },
+    "ButtonGestures": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 929
+      },
+      "revision": "4e443ee086f4922a"
+    },
+    "CPUTemp": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 63
+      },
+      "revision": "e3545bba34d396fc"
+    },
+    "CPUVolt": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 113
+      },
+      "revision": "7ffa930d47acae44"
+    },
+    "CPlusPlusChess": {
+      "default_branch": "master",
+      "loc": {
+        "C++": 2982
+      },
+      "revision": "103a89dfc4bf2e87"
+    },
+    "CodeSizeProfiler": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 205
+      },
+      "revision": "b7a6f104e428b271"
+    },
+    "Coder-X": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 2857
+      },
+      "revision": "87bcaf89e51b5c59"
+    },
+    "CompileTime": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 261
+      },
+      "revision": "7113d14740b495ec"
+    },
+    "ESP32Emic2": {
+      "default_branch": "master",
+      "loc": {
+        "C++": 696
+      },
+      "revision": "6b5d3b2f14a80d90"
+    },
+    "EyesAndBrows": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 374
+      },
+      "revision": "431fffcb645568cb"
+    },
+    "Gately": {
+      "default_branch": "main",
+      "loc": {
+        "HTML": 52,
+        "JavaScript": 40,
+        "TypeScript": 30007
+      },
+      "revision": "d939a4a49f6e00b9"
+    },
+    "JavaChess": {
+      "default_branch": "master",
+      "loc": {
+        "Java": 3894
+      },
+      "revision": "36e72a14ff2b76f9"
+    },
+    "JavaScriptChess": {
+      "default_branch": "main",
+      "loc": {
+        "HTML": 25,
+        "JavaScript": 706
+      },
+      "revision": "25be03361e3f4e7d"
+    },
+    "Laser-Clock": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 197
+      },
+      "revision": "569d205d45cfe36a"
+    },
+    "MicroChess": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 3689
+      },
+      "revision": "b3c8c0b10b8d05b2"
+    },
+    "Mimic": {
+      "default_branch": "master",
+      "loc": {
+        "C++": 1299
+      },
+      "revision": "e3d49b7b050ddb08"
+    },
+    "Minimax": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 2206
+      },
+      "revision": "da247608228e1d49"
+    },
+    "MyKeywords": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 99
+      },
+      "revision": "12c3ae825f2c5a80"
+    },
+    "Profiler": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 227
+      },
+      "revision": "4c2f6c098fa2cbb9"
+    },
+    "Rank-Storage": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 235
+      },
+      "revision": "d0363f315a2ec013"
+    },
+    "Reverse_Geocache_Box": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 2587
+      },
+      "revision": "d6e94030cf6e5a8b"
+    },
+    "SmartPin": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 174
+      },
+      "revision": "97ec0e3091d12d28"
+    },
+    "Smooth": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 407
+      },
+      "revision": "e801455b14dccb6b"
+    },
+    "StroopEffect": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 319
+      },
+      "revision": "0e8f088b12708c6d"
+    },
+    "TicTacToe": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 1200
+      },
+      "revision": "de4affff224ce431"
+    },
+    "TomServo": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 991
+      },
+      "revision": "ef2c6d6a5a1421e4"
+    },
+    "Uno-Q-Defender": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 1501
+      },
+      "revision": "b922397ba04dd4ca"
+    },
+    "Uno_R4_Space_Invaders": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 404
+      },
+      "revision": "190fa313bbb15e9a"
+    },
+    "Wheeluino": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 236
+      },
+      "revision": "3e080efb465f44f1"
+    },
+    "automod": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 35
+      },
+      "revision": "7b619a66f0578912"
+    },
+    "fANSI": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 779
+      },
+      "revision": "7ba38cc765a36253"
+    },
+    "galaga": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 265
+      },
+      "revision": "f0643e74895c25f1"
+    },
+    "github-traffic": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 263
+      },
+      "revision": "a42976047b09724f"
+    },
+    "python-nhl-api": {
+      "default_branch": "master",
+      "loc": {
+        "Python": 1572
+      },
+      "revision": "10613a50dc064992"
+    },
+    "reddit": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 2225
+      },
+      "revision": "5972e35f51a149c4"
+    },
+    "ripred-euclid": {
+      "default_branch": "main",
+      "loc": {
+        "HTML": 32,
+        "JavaScript": 74,
+        "TypeScript": 5632
+      },
+      "revision": "1e33cd45feae1459"
+    },
+    "ripred.github.io": {
+      "default_branch": "master",
+      "loc": {
+        "HTML": 1
+      },
+      "revision": "7b5b25576b65440a"
+    },
+    "sportslist": {
+      "default_branch": "master",
+      "loc": {
+        "Python": 487
+      },
+      "revision": "e629cb513ee1b3d4"
+    },
+    "tradewars-ansi-p2p": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 4266
+      },
+      "revision": "b64f188f90a1edd8"
+    },
+    "unoq-balancer-brick-bot": {
+      "default_branch": "main",
+      "loc": {
+        "C++": 822,
+        "HTML": 138,
+        "JavaScript": 493,
+        "Python": 559
+      },
+      "revision": "22b7d71b7e3fecd2"
+    },
+    "viber": {
+      "default_branch": "main",
+      "loc": {
+        "Python": 275
+      },
+      "revision": "9af0f0e52fcc144f"
+    }
+  },
+  "version": 1
+}
