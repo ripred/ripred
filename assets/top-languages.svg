@@ -1,40 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="278" role="img" aria-labelledby="title desc" viewBox="0 0 640 278">
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="252" role="img" aria-labelledby="title desc" viewBox="0 0 520 252">
 <title id="title">Top public repository languages</title>
-<desc id="desc">Language breakdown and approximate nonblank LOC for public profile repositories.</desc>
-<rect x="0.5" y="0.5" width="639" height="277" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+<desc id="desc">Language breakdown for public profile repositories.</desc>
+<rect x="0.5" y="0.5" width="519" height="251" rx="6" fill="#ffffff" stroke="#d0d7de"/>
 <text x="20" y="30" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="600">Top Public Repo Languages</text>
-<text x="20" y="50" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">Byte share with approximate nonblank LOC</text>
-<rect x="20" y="68" width="600" height="10" rx="5" fill="#eaeef2"/>
-<rect x="20.00" y="68" width="252.14" height="10" fill="#3178c6"/>
-<rect x="272.14" y="68" width="157.34" height="10" fill="#f34b7d"/>
-<rect x="429.48" y="68" width="105.62" height="10" fill="#3572a5"/>
-<rect x="535.10" y="68" width="32.23" height="10" fill="#b07219"/>
-<rect x="567.33" y="68" width="13.29" height="10" fill="#e34c26"/>
-<rect x="580.61" y="68" width="10.43" height="10" fill="#f1e05a"/>
-<text x="490" y="100" fill="#6e7781" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" text-anchor="end">Share</text>
-<text x="620" y="100" fill="#6e7781" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" text-anchor="end">LOC</text>
-<circle cx="26" cy="121" r="5" fill="#3178c6"/>
-<text x="40" y="126" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">TypeScript</text>
-<text x="490" y="126" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">42%</text>
-<text x="620" y="126" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">35,639</text>
-<circle cx="26" cy="149" r="5" fill="#f34b7d"/>
-<text x="40" y="154" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">C++</text>
-<text x="490" y="154" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">26.2%</text>
-<text x="620" y="154" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">30,347</text>
-<circle cx="26" cy="177" r="5" fill="#3572a5"/>
-<text x="40" y="182" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">Python</text>
-<text x="490" y="182" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">17.6%</text>
-<text x="620" y="182" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">13,737</text>
-<circle cx="26" cy="205" r="5" fill="#b07219"/>
-<text x="40" y="210" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">Java</text>
-<text x="490" y="210" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">5.4%</text>
-<text x="620" y="210" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">3,894</text>
-<circle cx="26" cy="233" r="5" fill="#e34c26"/>
-<text x="40" y="238" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">HTML</text>
-<text x="490" y="238" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">2.2%</text>
-<text x="620" y="238" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">1,949</text>
-<circle cx="26" cy="261" r="5" fill="#f1e05a"/>
-<text x="40" y="266" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">JavaScript</text>
-<text x="490" y="266" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">1.7%</text>
-<text x="620" y="266" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">7,903</text>
+<text x="20" y="50" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">Owned public repositories plus maintained public forks</text>
+<rect x="20" y="66" width="480" height="10" rx="5" fill="#eaeef2"/>
+<rect x="20.00" y="66" width="201.72" height="10" fill="#3178c6"/>
+<rect x="221.72" y="66" width="125.87" height="10" fill="#f34b7d"/>
+<rect x="347.58" y="66" width="84.49" height="10" fill="#3572a5"/>
+<rect x="432.08" y="66" width="25.78" height="10" fill="#b07219"/>
+<rect x="457.86" y="66" width="10.63" height="10" fill="#e34c26"/>
+<rect x="468.49" y="66" width="8.34" height="10" fill="#f1e05a"/>
+<circle cx="26" cy="93" r="5" fill="#3178c6"/>
+<text x="40" y="98" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">TypeScript</text>
+<text x="500" y="98" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">42%</text>
+<circle cx="26" cy="121" r="5" fill="#f34b7d"/>
+<text x="40" y="126" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">C++</text>
+<text x="500" y="126" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">26.2%</text>
+<circle cx="26" cy="149" r="5" fill="#3572a5"/>
+<text x="40" y="154" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">Python</text>
+<text x="500" y="154" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">17.6%</text>
+<circle cx="26" cy="177" r="5" fill="#b07219"/>
+<text x="40" y="182" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">Java</text>
+<text x="500" y="182" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">5.4%</text>
+<circle cx="26" cy="205" r="5" fill="#e34c26"/>
+<text x="40" y="210" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">HTML</text>
+<text x="500" y="210" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">2.2%</text>
+<circle cx="26" cy="233" r="5" fill="#f1e05a"/>
+<text x="40" y="238" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">JavaScript</text>
+<text x="500" y="238" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">1.7%</text>
 </svg>
