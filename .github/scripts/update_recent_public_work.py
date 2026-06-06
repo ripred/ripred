@@ -198,6 +198,7 @@ def write_language_svg(repos):
     safe_repos = public_profile_repositories(repos)
     language_totals = fetch_language_totals(safe_repos)
     svg = render_language_svg(language_totals)
+    svg_with_newline = f"{svg}\n"
     os.makedirs(os.path.dirname(LANGUAGE_SVG_PATH), exist_ok=True)
 
     current = None
@@ -205,10 +206,9 @@ def write_language_svg(repos):
         with open(LANGUAGE_SVG_PATH, "r", encoding="utf-8") as language_svg:
             current = language_svg.read()
 
-    if svg != current:
+    if svg_with_newline != current:
         with open(LANGUAGE_SVG_PATH, "w", encoding="utf-8") as language_svg:
-            language_svg.write(svg)
-            language_svg.write("\n")
+            language_svg.write(svg_with_newline)
         return True
     return False
 
