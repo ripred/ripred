@@ -101,10 +101,18 @@ def public_profile_repositories(repos):
     return safe_repos
 
 
+def public_language_repositories(repos):
+    return [
+        repo
+        for repo in repos
+        if repo.get("private") is False and repo.get("visibility", "public") == "public"
+    ]
+
+
 def render_recent_work(repos):
     safe_repos = public_profile_repositories(repos)
 
-    safe_repos.sort(key=lambda repo: parse_github_time(repo["pushed_at"]), reverse=True)
+    safe_repos.sort(key=lambda repo: (-parse_github_time(repo["pushed_at"]).timestamp(), repo["name"].lower()))
     lines = []
     for repo in safe_repos[:MAX_REPOS]:
         name = repo["name"]
@@ -124,6 +132,11 @@ def fetch_language_totals(repos):
         name = repo["name"]
         try:
             languages = github_get(f"/repos/{OWNER}/{name}/languages")
+        except urllib.error.HTTPError as error:
+            if error.code in (403, 429):
+                raise RuntimeError(f"GitHub API rate limit while fetching language stats for {name}") from error
+            print(f"Skipping language stats for {name}: {error}", file=sys.stderr)
+            continue
         except (urllib.error.URLError, ValueError, KeyError) as error:
             print(f"Skipping language stats for {name}: {error}", file=sys.stderr)
             continue
@@ -150,10 +163,10 @@ def render_language_svg(language_totals):
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-labelledby="title desc" viewBox="0 0 {width} {height}">',
         '<title id="title">Top public repository languages</title>',
-        '<desc id="desc">Language breakdown for public profile repositories.</desc>',
+        '<desc id="desc">Language breakdown for all public repositories.</desc>',
         f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="6" fill="#ffffff" stroke="#d0d7de"/>',
         '<text x="20" y="30" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="600">Top Public Repo Languages</text>',
-        '<text x="20" y="50" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">Owned public repositories plus maintained public forks</text>',
+        '<text x="20" y="50" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">All public repositories, including public forks</text>',
     ]
 
     if not top_languages or total == 0:
@@ -195,7 +208,7 @@ def render_language_svg(language_totals):
 
 
 def write_language_svg(repos):
-    safe_repos = public_profile_repositories(repos)
+    safe_repos = public_language_repositories(repos)
     language_totals = fetch_language_totals(safe_repos)
     svg = render_language_svg(language_totals)
     svg_with_newline = f"{svg}\n"
