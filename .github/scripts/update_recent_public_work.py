@@ -93,8 +93,6 @@ def render_recent_work(repos):
     if not lines:
         lines.append("- No recent public repository activity found.")
 
-    lines.append(f"")
-    lines.append(f"_Generated from public GitHub repository metadata._")
     return "\n".join(lines)
 
 

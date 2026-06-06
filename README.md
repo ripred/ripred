@@ -27,8 +27,6 @@ I build Arduino libraries, embedded tools, chess engines, robotics projects, dev
 - [Gately](https://github.com/ripred/Gately) - Web-based interactive logic circuit simulator built with TypeScript.
 - [unoq-balancer-brick-bot](https://github.com/ripred/unoq-balancer-brick-bot) - Custom Uno-Q Balancing Robot Brick and Custom Application!
 - [arduino-cli-skills](https://github.com/ripred/arduino-cli-skills) - Arduino CLI skills collection with a unified suite skill, real ICL examples, and hardware-validated workflows.
-
-_Generated from public GitHub repository metadata._
 <!-- RECENT-PUBLIC-WORK:END -->
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ripred&langs_count=6&layout=compact)](https://github.com/ripred/github-readme-stats)
