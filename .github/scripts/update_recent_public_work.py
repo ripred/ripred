@@ -181,7 +181,7 @@ def public_profile_repositories(repos):
 def render_recent_work(repos):
     safe_repos = public_profile_repositories(repos)
 
-    safe_repos.sort(key=lambda repo: parse_github_time(repo["pushed_at"]), reverse=True)
+    safe_repos.sort(key=lambda repo: (-parse_github_time(repo["pushed_at"]).timestamp(), repo["name"].lower()))
     lines = []
     for repo in safe_repos[:MAX_REPOS]:
         name = repo["name"]
