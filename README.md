@@ -22,8 +22,8 @@ I build Arduino libraries, embedded tools, chess engines, robotics projects, dev
 
 <!-- RECENT-PUBLIC-WORK:START -->
 - [CPlusPlusChess](https://github.com/ripred/CPlusPlusChess) - Modern C++ Chess. 24-bit ANSI colored, console-based chess using C++17. Optional multi-threaded AI using Minimax with alpha-beta pruning. F...
-- [Profiler](https://github.com/ripred/Profiler) - Easily profile your Arduino functions to see how much time they take. The output can be disabled and enabled at runtime. Very lightweight....
 - [tradewars-ansi-p2p](https://github.com/ripred/tradewars-ansi-p2p) - Peer-to-peer ANSI terminal space game with UDP mesh networking, persistence, trading, combat, and dashboard UI.
+- [Profiler](https://github.com/ripred/Profiler) - Easily profile your Arduino functions to see how much time they take. The output can be disabled and enabled at runtime. Very lightweight....
 - [Gately](https://github.com/ripred/Gately) - Web-based interactive logic circuit simulator built with TypeScript.
 - [unoq-balancer-brick-bot](https://github.com/ripred/unoq-balancer-brick-bot) - Custom Uno-Q Balancing Robot Brick and Custom Application!
 - [arduino-cli-skills](https://github.com/ripred/arduino-cli-skills) - Arduino CLI skills collection with a unified suite skill, real ICL examples, and hardware-validated workflows.
