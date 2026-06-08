@@ -5,12 +5,12 @@
 <text x="20" y="30" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="600">Top Public Repo Languages</text>
 <text x="20" y="50" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">All public repositories, including public forks</text>
 <rect x="20" y="66" width="480" height="10" rx="5" fill="#eaeef2"/>
-<rect x="20.00" y="66" width="123.32" height="10" fill="#f34b7d"/>
-<rect x="143.32" y="66" width="119.48" height="10" fill="#555555"/>
-<rect x="262.79" y="66" width="109.36" height="10" fill="#3572a5"/>
-<rect x="372.15" y="66" width="45.16" height="10" fill="#dea584"/>
-<rect x="417.32" y="66" width="21.27" height="10" fill="#3178c6"/>
-<rect x="438.58" y="66" width="18.21" height="10" fill="#e34c26"/>
+<rect x="20.00" y="66" width="123.24" height="10" fill="#f34b7d"/>
+<rect x="143.24" y="66" width="119.41" height="10" fill="#555555"/>
+<rect x="262.65" y="66" width="109.30" height="10" fill="#3572a5"/>
+<rect x="371.95" y="66" width="45.14" height="10" fill="#dea584"/>
+<rect x="417.09" y="66" width="21.53" height="10" fill="#3178c6"/>
+<rect x="438.62" y="66" width="18.20" height="10" fill="#e34c26"/>
 <circle cx="26" cy="93" r="5" fill="#f34b7d"/>
 <text x="40" y="98" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">C++</text>
 <text x="500" y="98" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">25.7%</text>
@@ -25,7 +25,7 @@
 <text x="500" y="182" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">9.4%</text>
 <circle cx="26" cy="205" r="5" fill="#3178c6"/>
 <text x="40" y="210" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">TypeScript</text>
-<text x="500" y="210" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">4.4%</text>
+<text x="500" y="210" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">4.5%</text>
 <circle cx="26" cy="233" r="5" fill="#e34c26"/>
 <text x="40" y="238" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">HTML</text>
 <text x="500" y="238" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" text-anchor="end">3.8%</text>
