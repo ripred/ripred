@@ -21,11 +21,11 @@ I build Arduino libraries, embedded tools, chess engines, robotics projects, dev
 ## Recent Public Work
 
 <!-- RECENT-PUBLIC-WORK:START -->
+- [ripred-euclid](https://github.com/ripred/ripred-euclid) - Turn based 2 player game or play against computer. Devvit game entry.
 - [Gately](https://github.com/ripred/Gately) - Web-based interactive logic circuit simulator built with TypeScript.
 - [Coder-X](https://github.com/ripred/Coder-X) - Coder-X: An agentic Python coding assistant with robust CLI, model management, secure config, and full test coverage. Built for extensibili...
 - [Arduino-Project-Manager-GPT](https://github.com/ripred/Arduino-Project-Manager-GPT) - A complete customized GPT that has access to your Arduino/ folder to compile, upload, create, debug, manage libraries and board cores, auto...
 - [python-nhl-api](https://github.com/ripred/python-nhl-api) - Python helpers and tests for exploring NHL API schedules, teams, people, games, and markup output.
-- [ripred-euclid](https://github.com/ripred/ripred-euclid) - Turn based 2 player game or play against computer. Devvit game entry.
 - [Wheeluino](https://github.com/ripred/Wheeluino) - A microcontroller operated Wheel-O! A simple desktop toy that makes an Arduino control a Wheel-O toy. 😎.
 <!-- RECENT-PUBLIC-WORK:END -->
 
