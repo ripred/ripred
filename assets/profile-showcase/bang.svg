@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" role="img" aria-labelledby="title desc" viewBox="0 0 96 96">
+<title id="title">Bang showcase image</title>
+<desc id="desc">Circular generated image for Bang showcase image.</desc>
+<circle cx="48" cy="48" r="46.5" fill="#3572a5" stroke="#d0d7de" stroke-width="3"/>
+<text x="48" y="50" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="middle" dominant-baseline="central">!</text>
+</svg>

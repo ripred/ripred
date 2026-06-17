@@ -25,10 +25,10 @@ I build Arduino libraries, embedded tools, chess engines, robotics projects, dev
 
 ![Top public repository languages](assets/top-languages.svg)
 
-## Pinned Repositories
-
 <!-- PROFILE-SHOWCASE:START -->
-A generated repository showcase maintained from the private profile automation backend.
+## Custom User Pinned Repositories
+
+My bespoke repository showcase.
 
 <table>
 <tbody>
@@ -37,7 +37,8 @@ A generated repository showcase maintained from the private profile automation b
 <a id="profile-showcase-javachess"></a>
 <details>
 <summary>
-<a href="#profile-showcase-javachess"><strong>JavaChess</strong></a><br>
+<img src="assets/profile-showcase/javachess.svg" alt="JavaChess showcase image" width="48" height="48" align="right">
+<strong>JavaChess</strong><br>
 <sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
@@ -72,7 +73,8 @@ A generated repository showcase maintained from the private profile automation b
 <a id="profile-showcase-microchess"></a>
 <details>
 <summary>
-<a href="#profile-showcase-microchess"><strong>MicroChess</strong></a><br>
+<img src="assets/profile-showcase/microchess.svg" alt="MicroChess showcase image" width="48" height="48" align="right">
+<strong>MicroChess</strong><br>
 <sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
@@ -107,7 +109,8 @@ Embedded chess engine designed to use less than 2K of RAM.
 <a id="profile-showcase-cpuvolt"></a>
 <details>
 <summary>
-<a href="#profile-showcase-cpuvolt"><strong>CPUVolt</strong></a><br>
+<img src="assets/profile-showcase/cpuvolt.svg" alt="CPUVolt showcase image" width="48" height="48" align="right">
+<strong>CPUVolt</strong><br>
 <sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
@@ -144,7 +147,8 @@ Read processor Vcc and estimate battery capacity on ATmega-based Arduino project
 <a id="profile-showcase-smooth"></a>
 <details>
 <summary>
-<a href="#profile-showcase-smooth"><strong>Smooth</strong></a><br>
+<img src="assets/profile-showcase/smooth.svg" alt="Smooth showcase image" width="48" height="48" align="right">
+<strong>Smooth</strong><br>
 <sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
@@ -179,7 +183,8 @@ Compact exponential moving averages with constant memory and runtime.
 <a id="profile-showcase-bang"></a>
 <details>
 <summary>
-<a href="#profile-showcase-bang"><strong>Bang</strong></a><br>
+<img src="assets/profile-showcase/bang.svg" alt="Bang showcase image" width="48" height="48" align="right">
+<strong>Bang</strong><br>
 <sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
@@ -214,7 +219,8 @@ Host-command bridge for microcontrollers that need a PC, Mac, or Linux machine t
 <a id="profile-showcase-arduino-stuff"></a>
 <details>
 <summary>
-<a href="#profile-showcase-arduino-stuff"><strong>Arduino-Stuff</strong></a><br>
+<img src="assets/profile-showcase/arduino-stuff.svg" alt="Arduino-Stuff showcase image" width="48" height="48" align="right">
+<strong>Arduino-Stuff</strong><br>
 <sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
@@ -251,7 +257,8 @@ Official Arduino libraries and personal embedded projects.
 <a id="profile-showcase-bettermenu"></a>
 <details>
 <summary>
-<a href="#profile-showcase-bettermenu"><strong>BetterMenu</strong></a><br>
+<img src="assets/profile-showcase/bettermenu.svg" alt="BetterMenu showcase image" width="48" height="48" align="right">
+<strong>BetterMenu</strong><br>
 <sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
@@ -286,7 +293,8 @@ Declarative, adapter-friendly menu infrastructure for embedded projects.
 <a id="profile-showcase-github-traffic"></a>
 <details>
 <summary>
-<a href="#profile-showcase-github-traffic"><strong>github-traffic</strong></a><br>
+<img src="assets/profile-showcase/github-traffic.svg" alt="github-traffic showcase image" width="48" height="48" align="right">
+<strong>github-traffic</strong><br>
 <sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
