@@ -304,6 +304,11 @@ def skipped_badge_kinds(repo: Repository) -> set[str]:
     return {name.lower() for name in repo.skip_badge_kinds}
 
 
+def workflow_badges_allowed(repo: Repository) -> bool:
+    """Return whether GitHub Actions badge images should be shown."""
+    return not repo.private
+
+
 def read_text(path: Path) -> str:
     """Read text from a file if present."""
     if not path.exists():
@@ -490,6 +495,13 @@ def remove_skipped_badges(markdown: str, repo: Repository) -> str:
     for line in markdown.splitlines():
         lower = line.lower()
         remove = any(f"actions/workflows/{workflow}/badge.svg" in lower for workflow in workflow_skips)
+        remove = remove or (
+            not workflow_badges_allowed(repo)
+            and (
+                ("actions/workflows/" in lower and "badge.svg" in lower)
+                or f"github/actions/workflow/status/{repo.full_name}".lower() in lower
+            )
+        )
         remove = remove or ("arduino_library_manager" in kind_skips and "ardu-badge.com/badge/" in lower)
         remove = remove or ("release" in kind_skips and f"github/release/{repo.full_name}".lower() in lower)
         remove = remove or ("tag" in kind_skips and f"github/tag/{repo.full_name}".lower() in lower)
@@ -528,6 +540,8 @@ def badge_lines(
     scoped_file_paths = target_paths if target_paths is not None else all_paths(repo_dir)
 
     def add(line: str, *, kind: str | None = None, workflow: str | None = None) -> None:
+        if workflow and not workflow_badges_allowed(repo):
+            return
         if workflow and workflow.lower() in skipped_workflow_badges(repo):
             return
         if workflow and target_path and not workflow_mentions_path(repo_dir, workflow, target_path):
