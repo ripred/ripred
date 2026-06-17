@@ -1,8 +1,6 @@
 [![JSON check](https://flat.badgen.net/badge/JSON%20check/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/jsoncheck.yml)
-[![Repo Audit Python](https://flat.badgen.net/badge/Repo%20Audit%20Python/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/repo-audit-python.yml)
+[![Repositories Audit](https://flat.badgen.net/badge/Repositories%20Audit/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/repo-audit-python.yml)
 [![Update Recent Public Work](https://flat.badgen.net/badge/Update%20Recent%20Public%20Work/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/update-recent-public-work.yml)
-[![Python](https://flat.badgen.net/badge/Python/3.x/3776ab?labelColor=24292f)](https://www.python.org/downloads/)
-[![Code style: Ruff](https://flat.badgen.net/badge/Code%20style/ruff/008b8b?labelColor=24292f)](https://github.com/astral-sh/ruff)
 
 ### Hi there, I'm Trent. Welcome to my repositories.
 
