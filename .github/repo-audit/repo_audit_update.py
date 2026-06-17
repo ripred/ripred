@@ -294,6 +294,8 @@ def clone_repository(repo: Repository, target: Path) -> None:
     )
     if result.returncode == 0:
         return
+    if target.exists():
+        shutil.rmtree(target)
     target.mkdir(parents=True, exist_ok=True)
     run(["git", "init", "-q", "-b", repo.default_branch], cwd=target)
     run(["git", "remote", "add", "origin", f"https://github.com/{repo.full_name}.git"], cwd=target)
