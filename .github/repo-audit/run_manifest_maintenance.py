@@ -16,6 +16,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 MANIFEST_PATH = SCRIPT_DIR / "repositories.json"
 AUDIT_SCRIPT = SCRIPT_DIR / "repo_audit_update.py"
 REPOSITORY_RE = re.compile(r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)?$")
+TARGET_PATH_RE = re.compile(r"^[A-Za-z0-9._/-]+$")
 
 
 def load_manifest(path: Path) -> list[dict[str, Any]]:
@@ -28,6 +29,15 @@ def validate_repo_parameter(value: str) -> None:
     """Reject malformed repository parameters before any action runs."""
     if not REPOSITORY_RE.fullmatch(value):
         raise SystemExit(f"invalid repository parameter: {value!r}")
+
+
+def validate_path_parameter(value: str) -> None:
+    """Reject unsafe repository-relative folder paths."""
+    if value != value.strip() or "\\" in value or not TARGET_PATH_RE.fullmatch(value):
+        raise SystemExit(f"invalid target path parameter: {value!r}")
+    parts = value.split("/")
+    if not parts or any(part in {"", ".", "..", ".git"} for part in parts):
+        raise SystemExit(f"target path contains an unsafe segment: {value!r}")
 
 
 def run_for_repo(repo: dict[str, Any], args: argparse.Namespace) -> int:
@@ -44,6 +54,8 @@ def run_for_repo(repo: dict[str, Any], args: argparse.Namespace) -> int:
         "--repo",
         full_name,
     ]
+    if args.path and args.command in {"plan", "apply"}:
+        command.extend(["--path", args.path])
     if args.keep_worktrees and args.command in {"plan", "apply"}:
         command.append("--keep-worktrees")
     print(f"== {full_name} ==")
@@ -58,6 +70,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--manifest", type=Path, default=MANIFEST_PATH)
     parser.add_argument("--output-dir", type=Path, default=Path.cwd())
     parser.add_argument("--repo", action="append", help="limit to NAME or OWNER/NAME")
+    parser.add_argument("--path", help="repository-relative folder target for plan/apply")
     parser.add_argument("--keep-worktrees", action="store_true")
     parser.add_argument("--timeout", type=int, default=600)
     return parser
@@ -67,6 +80,8 @@ def main() -> None:
     """Run the manifest orchestration."""
     args = build_parser().parse_args()
     repositories = load_manifest(args.manifest)
+    if args.path:
+        validate_path_parameter(args.path)
     if args.repo:
         for value in args.repo:
             validate_repo_parameter(value)

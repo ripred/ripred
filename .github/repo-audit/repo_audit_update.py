@@ -10,7 +10,7 @@ import re
 import shutil
 import subprocess
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 from urllib.parse import quote
 from urllib.request import urlopen
@@ -19,6 +19,7 @@ from urllib.request import urlopen
 MANIFEST_PATH = Path(__file__).with_name("repositories.json")
 WORK_ROOT = Path.cwd() / ".repo-maintenance-worktrees"
 REPOSITORY_RE = re.compile(r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)?$")
+TARGET_PATH_RE = re.compile(r"^[A-Za-z0-9._/-]+$")
 
 
 @dataclass
@@ -146,6 +147,29 @@ def split_repo(value: str, default_owner: str = "ripred") -> tuple[str, str]:
         owner, name = value.split("/", 1)
         return owner, name
     return default_owner, value
+
+
+def normalize_target_path(value: str | None) -> str:
+    """Validate and normalize a repository-relative folder path."""
+    if not value:
+        return ""
+    if value != value.strip() or "\\" in value or not TARGET_PATH_RE.fullmatch(value):
+        raise ValueError(f"invalid target path parameter: {value!r}")
+    path = PurePosixPath(value)
+    if path.is_absolute():
+        raise ValueError(f"target path must be repository-relative: {value!r}")
+    parts = path.parts
+    if not parts or any(part in {"", ".", "..", ".git"} for part in parts):
+        raise ValueError(f"target path contains an unsafe segment: {value!r}")
+    return PurePosixPath(*parts).as_posix()
+
+
+def target_path_arg(value: str) -> str:
+    """Argparse type for repository-relative folder paths."""
+    try:
+        return normalize_target_path(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(str(exc)) from exc
 
 
 def filter_repositories(repositories: list[Repository], names: list[str] | None) -> list[Repository]:
@@ -349,6 +373,46 @@ def has_json_files(paths: list[str]) -> bool:
     return any(path.lower().endswith(".json") for path in paths)
 
 
+def has_python_files(paths: list[str]) -> bool:
+    """Return whether the path list has Python files."""
+    return any(path.lower().endswith(".py") for path in paths)
+
+
+def scoped_paths(paths: list[str], target_path: str) -> list[str]:
+    """Return paths under a repository-relative folder."""
+    if not target_path:
+        return paths
+    prefix = target_path.rstrip("/") + "/"
+    return [path[len(prefix) :] for path in paths if path.startswith(prefix)]
+
+
+def display_title(value: str) -> str:
+    """Return a readable title for a repository path or filename."""
+    name = PurePosixPath(value).name if value else "Repository"
+    words = name.replace("_", " ").replace("-", " ").split()
+    return " ".join(word.upper() if word.lower() == "ci" else word.title() for word in words)
+
+
+def path_slug(value: str) -> str:
+    """Return a stable workflow-safe slug for a repository-relative path."""
+    parts = [part for part in PurePosixPath(value).parts if part != ".github"]
+    slug = "-".join(parts) if parts else "repository"
+    return re.sub(r"[^a-z0-9-]+", "-", slug.lower()).strip("-") or "repository"
+
+
+def python_workflow_name(target_path: str) -> str:
+    """Return the workflow filename for a scoped Python check."""
+    return f"{path_slug(target_path)}-python.yml"
+
+
+def workflow_mentions_path(repo_dir: Path, workflow: str, target_path: str) -> bool:
+    """Return whether a workflow file references the target folder."""
+    if not target_path:
+        return True
+    workflow_path = repo_dir / ".github" / "workflows" / workflow
+    return target_path.lower() in read_text(workflow_path).lower()
+
+
 def latest_release(repo: Repository) -> str | None:
     """Return the latest GitHub release tag."""
     result = run(
@@ -452,16 +516,23 @@ def badge_lines(
     repo_dir: Path,
     workflows: list[str],
     readme: str,
+    *,
+    target_path: str = "",
+    target_paths: list[str] | None = None,
 ) -> list[str]:
     """Build visible README badge lines that are not already present."""
     lines = []
     root_library = root_library_name(repo_dir)
     release = latest_release(repo)
     tag = latest_tag(repo)
+    scoped_file_paths = target_paths if target_paths is not None else all_paths(repo_dir)
 
     def add(line: str, *, kind: str | None = None, workflow: str | None = None) -> None:
         if workflow and workflow.lower() in skipped_workflow_badges(repo):
             return
+        if workflow and target_path and not workflow_mentions_path(repo_dir, workflow, target_path):
+            if workflow != "jsoncheck.yml" or not has_json_files(scoped_file_paths):
+                return
         if kind and kind.lower() in skipped_badge_kinds(repo):
             return
         if not has_badge_kind(readme, repo, kind=kind, workflow=workflow):
@@ -498,12 +569,17 @@ def badge_lines(
             continue
         if workflow.lower() in skipped_workflow_badges(repo):
             continue
+        if target_path and not workflow_mentions_path(repo_dir, workflow, target_path):
+            continue
         label = workflow_label(workflow)
         add(
             f"[![{label}](https://github.com/{repo.full_name}/actions/workflows/{workflow}/badge.svg)]"
             f"(https://github.com/{repo.full_name}/actions/workflows/{workflow})",
             workflow=workflow,
         )
+
+    if target_path:
+        return lines
 
     if root_library and arduino_badge_available(root_library):
         encoded = quote(root_library)
@@ -594,14 +670,38 @@ def badge_insertion_index(lines: list[str]) -> int:
     return index
 
 
-def insert_badges(markdown: str, additions: list[str], repo: Repository) -> str:
+def folder_readme_body(repo: Repository, target_path: str, target_paths: list[str]) -> str:
+    """Return a deterministic README body for a repository subfolder."""
+    body = [
+        f"This folder is part of [{repo.full_name}](https://github.com/{repo.full_name}).",
+    ]
+    visible_files = [
+        path
+        for path in target_paths
+        if path != "README.md" and not path.endswith("/") and "__pycache__" not in path.split("/")
+    ]
+    if visible_files:
+        body.extend(["", "## Contents", ""])
+        body.extend(f"- `{path}`" for path in sorted(visible_files))
+    return "\n".join(body)
+
+
+def insert_badges(
+    markdown: str,
+    additions: list[str],
+    repo: Repository,
+    *,
+    title: str | None = None,
+    body: str | None = None,
+) -> str:
     """Insert badge lines without disturbing existing visible badges."""
     if not markdown.strip():
-        body = repo.description.strip() if repo.description else f"Repository for {repo.name}."
+        readme_title = title or repo.name
+        readme_body = body or repo.description.strip() or f"Repository for {repo.name}."
         badge_block = "\n".join(additions)
         if badge_block:
-            return f"# {repo.name}\n\n{badge_block}\n\n{body}\n"
-        return f"# {repo.name}\n\n{body}\n"
+            return f"# {readme_title}\n\n{badge_block}\n\n{readme_body}\n"
+        return f"# {readme_title}\n\n{readme_body}\n"
     if not additions:
         return markdown
     lines = markdown.splitlines()
@@ -701,6 +801,51 @@ jobs:
 """
 
 
+def python_folder_workflow(target_path: str) -> str:
+    """Return a scoped Python validation workflow for a repository folder."""
+    title = display_title(target_path)
+    workflow = python_workflow_name(target_path)
+    return f"""name: {title} Python
+
+on:
+  push:
+    paths:
+      - "{target_path}/**"
+      - ".github/workflows/{workflow}"
+  pull_request:
+    paths:
+      - "{target_path}/**"
+      - ".github/workflows/{workflow}"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Compile Python scripts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import py_compile
+
+          for path in sorted(Path("{target_path}").rglob("*.py")):
+              py_compile.compile(str(path), doraise=True)
+          PY
+      - name: Install lint tooling
+        run: python -m pip install --upgrade ruff
+      - name: Lint Python scripts
+        run: ruff check "{target_path}"
+"""
+
+
 def generated_workflow_template(repo: Repository, workflow: str) -> str | None:
     """Return a generated workflow template for safe removal checks."""
     if workflow == "jsoncheck.yml":
@@ -727,11 +872,18 @@ def remove_skipped_generated_workflows(repo: Repository, repo_dir: Path) -> list
     return removed
 
 
-def apply_repository(repo: Repository, *, apply: bool, keep_worktrees: bool) -> PlannedChange:
+def apply_repository(
+    repo: Repository,
+    *,
+    apply: bool,
+    keep_worktrees: bool,
+    target_path: str = "",
+) -> PlannedChange:
     """Plan or apply maintenance changes to one repository."""
     target = WORK_ROOT / repo.name
     clone_repository(repo, target)
     paths = all_paths(target)
+    target_paths = scoped_paths(paths, target_path)
     workflows = workflow_files(target)
     changes = []
     skipped = skipped_workflow_names(repo)
@@ -741,38 +893,71 @@ def apply_repository(repo: Repository, *, apply: bool, keep_worktrees: bool) -> 
         changes.append("remove inapplicable generated workflow(s): " + ", ".join(removed))
         workflows = workflow_files(target)
 
-    sketches = sketch_paths(paths)
-    if sketches and "arduino-lint.yml" not in workflows and "arduino-lint.yml" not in skipped:
-        if write_if_changed(target / ".github/workflows/arduino-lint.yml", arduino_lint_workflow()):
-            changes.append("add Arduino-lint workflow")
-            workflows = workflow_files(target)
-
-    existing_build = any(name.lower() in {"ci.yml", "ci.yaml", "build.yml", "build.yaml"} for name in workflows)
-    root_library = (target / "library.properties").exists()
-    if (
-        root_library
-        and "arduino_test_runner.yml" not in workflows
-        and "arduino_test_runner.yml" not in skipped
-        and not existing_build
-        and (target / "examples").exists()
-    ):
-        if write_if_changed(
-            target / ".github/workflows/arduino_test_runner.yml",
-            arduino_compile_workflow(repo),
+    if target_path:
+        python_workflow = python_workflow_name(target_path)
+        if (
+            has_python_files(target_paths)
+            and python_workflow not in workflows
+            and python_workflow not in skipped
         ):
-            changes.append("add Arduino CI workflow")
-            workflows = workflow_files(target)
+            if write_if_changed(
+                target / ".github/workflows" / python_workflow,
+                python_folder_workflow(target_path),
+            ):
+                changes.append(f"add Python workflow for {target_path}")
+                workflows = workflow_files(target)
+        if has_json_files(target_paths) and "jsoncheck.yml" not in workflows and "jsoncheck.yml" not in skipped:
+            if write_if_changed(target / ".github/workflows/jsoncheck.yml", json_workflow()):
+                changes.append("add JSON check workflow")
+                workflows = workflow_files(target)
+    else:
+        sketches = sketch_paths(paths)
+        if sketches and "arduino-lint.yml" not in workflows and "arduino-lint.yml" not in skipped:
+            if write_if_changed(target / ".github/workflows/arduino-lint.yml", arduino_lint_workflow()):
+                changes.append("add Arduino-lint workflow")
+                workflows = workflow_files(target)
 
-    if has_json_files(paths) and "jsoncheck.yml" not in workflows and "jsoncheck.yml" not in skipped:
-        if write_if_changed(target / ".github/workflows/jsoncheck.yml", json_workflow()):
-            changes.append("add JSON check workflow")
-            workflows = workflow_files(target)
+        existing_build = any(name.lower() in {"ci.yml", "ci.yaml", "build.yml", "build.yaml"} for name in workflows)
+        root_library = (target / "library.properties").exists()
+        if (
+            root_library
+            and "arduino_test_runner.yml" not in workflows
+            and "arduino_test_runner.yml" not in skipped
+            and not existing_build
+            and (target / "examples").exists()
+        ):
+            if write_if_changed(
+                target / ".github/workflows/arduino_test_runner.yml",
+                arduino_compile_workflow(repo),
+            ):
+                changes.append("add Arduino CI workflow")
+                workflows = workflow_files(target)
 
-    readme_path = root_readme(target)
+        if has_json_files(paths) and "jsoncheck.yml" not in workflows and "jsoncheck.yml" not in skipped:
+            if write_if_changed(target / ".github/workflows/jsoncheck.yml", json_workflow()):
+                changes.append("add JSON check workflow")
+                workflows = workflow_files(target)
+
+    if target_path:
+        readme_path = target / target_path / "README.md"
+    else:
+        readme_path = root_readme(target)
     readme = remove_skipped_badges(read_text(readme_path), repo)
-    additions = badge_lines(repo, target, workflows, readme)
-    if write_if_changed(readme_path, insert_badges(readme, additions, repo)):
-        changes.append("create README" if not readme else "update README badges")
+    additions = badge_lines(
+        repo,
+        target,
+        workflows,
+        readme,
+        target_path=target_path,
+        target_paths=target_paths,
+    )
+    title = display_title(target_path) if target_path else None
+    body = folder_readme_body(repo, target_path, target_paths) if target_path else None
+    if write_if_changed(readme_path, insert_badges(readme, additions, repo, title=title, body=body)):
+        if target_path:
+            changes.append(f"create or update {target_path}/README.md")
+        else:
+            changes.append("create README" if not readme else "update README badges")
 
     status = run(["git", "status", "--short"], cwd=target).stdout.strip()
     planned = PlannedChange(repository=repo, changes=changes, status=status)
@@ -824,7 +1009,12 @@ def command_plan_or_apply(args: argparse.Namespace, *, apply: bool) -> None:
     changes = []
     for repo in repositories:
         print(f"== {repo.full_name} ==", flush=True)
-        change = apply_repository(repo, apply=apply, keep_worktrees=args.keep_worktrees)
+        change = apply_repository(
+            repo,
+            apply=apply,
+            keep_worktrees=args.keep_worktrees,
+            target_path=args.path,
+        )
         if change.status:
             print(f"{repo.full_name}: {', '.join(change.changes)}")
             print(change.status)
@@ -1085,11 +1275,13 @@ def build_parser() -> argparse.ArgumentParser:
     plan_parser = subparsers.add_parser("plan", help="show deterministic changes without pushing")
     plan_parser.add_argument("--repo", action="append", help="single repository NAME or OWNER/NAME")
     plan_parser.add_argument("--repositories", nargs="*", help="optional NAME or OWNER/NAME filters")
+    plan_parser.add_argument("--path", type=target_path_arg, default="", help="repository-relative folder target")
     plan_parser.add_argument("--keep-worktrees", action="store_true")
 
     apply_parser = subparsers.add_parser("apply", help="apply and push deterministic changes")
     apply_parser.add_argument("--repo", action="append", help="single repository NAME or OWNER/NAME")
     apply_parser.add_argument("--repositories", nargs="*", help="optional NAME or OWNER/NAME filters")
+    apply_parser.add_argument("--path", type=target_path_arg, default="", help="repository-relative folder target")
     apply_parser.add_argument("--keep-worktrees", action="store_true")
 
     verify_parser = subparsers.add_parser("verify-actions", help="report latest workflow runs")

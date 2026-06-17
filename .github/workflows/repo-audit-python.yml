@@ -1,0 +1,38 @@
+name: Repo Audit Python
+
+on:
+  push:
+    paths:
+      - ".github/repo-audit/**"
+      - ".github/workflows/repo-audit-python.yml"
+  pull_request:
+    paths:
+      - ".github/repo-audit/**"
+      - ".github/workflows/repo-audit-python.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Compile Python scripts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import py_compile
+
+          for path in sorted(Path(".github/repo-audit").rglob("*.py")):
+              py_compile.compile(str(path), doraise=True)
+          PY
+      - name: Install lint tooling
+        run: python -m pip install --upgrade ruff
+      - name: Lint Python scripts
+        run: ruff check ".github/repo-audit"
