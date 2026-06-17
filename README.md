@@ -5,6 +5,26 @@
 
 I build Arduino libraries, embedded tools, chess engines, robotics projects, developer utilities, and the occasional game. My interests include language design, FPGAs, compiler design, kernel development, high-speed networking, embedded systems, industrial automation, paleontology, drumming, math, and skydiving.
 
+## Current Notes
+
+- I write a lot of small libraries and experiments around Arduino, C++, Python, and game/search algorithms.
+- The nickname Ripred came from *The Underland Chronicles*.
+- I am looking for sponsors for Buffy the Pack Mule, my digital fossil-hunting robot and equipment carrier.
+- GitHub-only contact: open an issue in [ripred/ripred](https://github.com/ripred/ripred/issues/new).
+
+## Recent Public Work
+
+<!-- RECENT-PUBLIC-WORK:START -->
+- [automod](https://github.com/ripred/automod) - This is a template repo for syncing Reddit AutoMod settings with GitHub. It automatically updates and fetches the configuration using Pytho...
+- [Wheeluino](https://github.com/ripred/Wheeluino) - A microcontroller operated Wheel-O! A simple desktop toy that makes an Arduino control a Wheel-O toy. 😎.
+- [viber](https://github.com/ripred/viber) - AI Coding Assistant.
+- [unoq-balancer-brick-bot](https://github.com/ripred/unoq-balancer-brick-bot) - Custom Uno-Q Balancing Robot Brick and Custom Application!
+- [Uno_R4_Space_Invaders](https://github.com/ripred/Uno_R4_Space_Invaders) - Quick and Dirty Space Invaders on the Uno R4 Wifi LED Matrix!
+- [Uno-Q-Defender](https://github.com/ripred/Uno-Q-Defender) - Defender-style game for Arduino UNO Q 13x8 LED matrix with grayscale shading, demo self-play, and parallax.
+<!-- RECENT-PUBLIC-WORK:END -->
+
+![Top public repository languages](assets/top-languages.svg)
+
 ## Pinned Repositories
 
 <!-- PROFILE-SHOWCASE:START -->
@@ -17,8 +37,8 @@ A generated repository showcase maintained from the private profile automation b
 <a id="profile-showcase-javachess"></a>
 <details>
 <summary>
-<a><strong>JavaChess</strong></a><br>
-<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | <a href="#profile-showcase-javachess">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-javachess"><strong>JavaChess</strong></a><br>
+<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -52,8 +72,8 @@ A generated repository showcase maintained from the private profile automation b
 <a id="profile-showcase-microchess"></a>
 <details>
 <summary>
-<a><strong>MicroChess</strong></a><br>
-<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | <a href="#profile-showcase-microchess">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-microchess"><strong>MicroChess</strong></a><br>
+<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -87,8 +107,8 @@ Embedded chess engine designed to use less than 2K of RAM.
 <a id="profile-showcase-cpuvolt"></a>
 <details>
 <summary>
-<a><strong>CPUVolt</strong></a><br>
-<sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17 | <a href="#profile-showcase-cpuvolt">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-cpuvolt"><strong>CPUVolt</strong></a><br>
+<sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -124,8 +144,8 @@ Read processor Vcc and estimate battery capacity on ATmega-based Arduino project
 <a id="profile-showcase-smooth"></a>
 <details>
 <summary>
-<a><strong>Smooth</strong></a><br>
-<sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17 | <a href="#profile-showcase-smooth">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-smooth"><strong>Smooth</strong></a><br>
+<sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -159,8 +179,8 @@ Compact exponential moving averages with constant memory and runtime.
 <a id="profile-showcase-bang"></a>
 <details>
 <summary>
-<a><strong>Bang</strong></a><br>
-<sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17 | <a href="#profile-showcase-bang">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-bang"><strong>Bang</strong></a><br>
+<sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -194,8 +214,8 @@ Host-command bridge for microcontrollers that need a PC, Mac, or Linux machine t
 <a id="profile-showcase-arduino-stuff"></a>
 <details>
 <summary>
-<a><strong>Arduino-Stuff</strong></a><br>
-<sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | <a href="#profile-showcase-arduino-stuff">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-arduino-stuff"><strong>Arduino-Stuff</strong></a><br>
+<sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -231,8 +251,8 @@ Official Arduino libraries and personal embedded projects.
 <a id="profile-showcase-bettermenu"></a>
 <details>
 <summary>
-<a><strong>BetterMenu</strong></a><br>
-<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | <a href="#profile-showcase-bettermenu">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-bettermenu"><strong>BetterMenu</strong></a><br>
+<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -266,8 +286,8 @@ Declarative, adapter-friendly menu infrastructure for embedded projects.
 <a id="profile-showcase-github-traffic"></a>
 <details>
 <summary>
-<a><strong>github-traffic</strong></a><br>
-<sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | <a href="#profile-showcase-github-traffic">focus</a> | Expand / collapse</sub>
+<a href="#profile-showcase-github-traffic"><strong>github-traffic</strong></a><br>
+<sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -304,23 +324,3 @@ Command-line reporting for repository traffic, views, stars, forks, and clones.
 </tbody>
 </table>
 <!-- PROFILE-SHOWCASE:END -->
-
-## Current Notes
-
-- I write a lot of small libraries and experiments around Arduino, C++, Python, and game/search algorithms.
-- The nickname Ripred came from *The Underland Chronicles*.
-- I am looking for sponsors for Buffy the Pack Mule, my digital fossil-hunting robot and equipment carrier.
-- GitHub-only contact: open an issue in [ripred/ripred](https://github.com/ripred/ripred/issues/new).
-
-## Recent Public Work
-
-<!-- RECENT-PUBLIC-WORK:START -->
-- [automod](https://github.com/ripred/automod) - This is a template repo for syncing Reddit AutoMod settings with GitHub. It automatically updates and fetches the configuration using Pytho...
-- [Wheeluino](https://github.com/ripred/Wheeluino) - A microcontroller operated Wheel-O! A simple desktop toy that makes an Arduino control a Wheel-O toy. 😎.
-- [viber](https://github.com/ripred/viber) - AI Coding Assistant.
-- [unoq-balancer-brick-bot](https://github.com/ripred/unoq-balancer-brick-bot) - Custom Uno-Q Balancing Robot Brick and Custom Application!
-- [Uno_R4_Space_Invaders](https://github.com/ripred/Uno_R4_Space_Invaders) - Quick and Dirty Space Invaders on the Uno R4 Wifi LED Matrix!
-- [Uno-Q-Defender](https://github.com/ripred/Uno-Q-Defender) - Defender-style game for Arduino UNO Q 13x8 LED matrix with grayscale shading, demo self-play, and parallax.
-<!-- RECENT-PUBLIC-WORK:END -->
-
-![Top public repository languages](assets/top-languages.svg)
