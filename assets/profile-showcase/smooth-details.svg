@@ -1,31 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300" role="img" aria-labelledby="title desc" viewBox="0 0 640 300">
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" role="img" aria-labelledby="title desc" viewBox="0 0 820 420">
+<style>@keyframes pulse-ring{0%,100%{opacity:.28;transform:scale(1)}50%{opacity:.72;transform:scale(1.08)}}@keyframes draw-card{from{stroke-dashoffset:2500}to{stroke-dashoffset:0}}@keyframes accent-glow{0%,100%{opacity:.72}50%{opacity:1}}@keyframes stat-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}svg .hover-lift{transition:transform .24s ease,opacity .24s ease}svg:hover .hover-lift{transform:translateY(-2px)}svg:hover .hover-bright{opacity:1}.pulse-ring{transform-box:fill-box;transform-origin:center;animation:pulse-ring 3.8s ease-in-out infinite}.card-outline{stroke-dasharray:2500;stroke-dashoffset:2500;animation:draw-card 1.6s ease-out forwards}.accent-bar{animation:accent-glow 4.2s ease-in-out infinite}.stat{opacity:0;animation:stat-in .5s ease-out forwards}@media (prefers-reduced-motion: reduce){.pulse-ring,.card-outline,.accent-bar,.stat{animation:none;opacity:1;stroke-dashoffset:0;transform:none}}</style>
 <title id="title">Smooth repository details</title>
 <desc id="desc">Generated repository detail card for Smooth.</desc>
-<rect x="0.5" y="0.5" width="639" height="299" rx="6" fill="#ffffff" stroke="#d0d7de"/>
-<rect x="0.5" y="0.5" width="639" height="8" rx="6" fill="#f34b7d"/>
-<circle cx="48" cy="58" r="30" fill="#f34b7d" stroke="#d0d7de" stroke-width="2"/>
-<text x="48" y="60" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" dominant-baseline="central">SM</text>
-<text x="92" y="45" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="700">Smooth</text>
-<text x="92" y="68" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">C++ repository</text>
-<text x="24" y="116" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="400">Compact exponential moving averages with constant memory and</text>
-<text x="24" y="134" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="400">runtime.</text>
-<text x="24" y="164" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">LANGUAGE</text>
-<text x="24" y="183" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">C++</text>
-<text x="174" y="164" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">STARS</text>
-<text x="174" y="183" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">63</text>
-<text x="324" y="164" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">FORKS</text>
-<text x="324" y="183" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">3</text>
-<text x="474" y="164" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">OPEN ISSUES</text>
-<text x="474" y="183" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">0</text>
-<text x="24" y="218" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">LICENSE</text>
-<text x="24" y="237" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">MIT</text>
-<text x="174" y="218" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">UPDATED</text>
-<text x="174" y="237" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">2026-06-17</text>
-<text x="324" y="218" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">DEFAULT BRANCH</text>
-<text x="324" y="237" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">main</text>
-<text x="474" y="218" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">SIZE</text>
-<text x="474" y="237" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">54 KB</text>
-<text x="24" y="274" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">TOPICS</text>
-<text x="78" y="274" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">arduino, arduino-library, arduino-library-manager, callbacks, constant-memo...</text>
-<text x="616" y="274" fill="#f34b7d" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="end">Click to open repository</text>
+<rect class="card-outline" x="1.5" y="1.5" width="817" height="417" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="3"/>
+<rect class="accent-bar hover-bright" x="1.5" y="1.5" width="817" height="12" rx="8" fill="#f34b7d" opacity=".78"/>
+<g class="hover-lift">
+<circle class="pulse-ring" cx="62" cy="76" r="41" fill="none" stroke="#f34b7d" stroke-width="5"/>
+<circle cx="62" cy="76" r="34" fill="#f34b7d" stroke="#d0d7de" stroke-width="2"/>
+<text x="62" y="78" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" dominant-baseline="central">SM</text>
+</g>
+<text x="116" y="58" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="28" font-weight="700">Smooth</text>
+<text x="116" y="86" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="15">C++ repository</text>
+<text x="32" y="145" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="400">Compact exponential moving averages with constant memory and runtime.</text>
+<g class="stat" style="animation-delay:120ms">
+<text x="32" y="226" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">LANGUAGE</text>
+<text x="32" y="245" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">C++</text>
+</g>
+<g class="stat" style="animation-delay:190ms">
+<text x="222" y="226" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">STARS</text>
+<text x="222" y="245" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">63</text>
+</g>
+<g class="stat" style="animation-delay:260ms">
+<text x="412" y="226" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">FORKS</text>
+<text x="412" y="245" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">3</text>
+</g>
+<g class="stat" style="animation-delay:330ms">
+<text x="602" y="226" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">OPEN ISSUES</text>
+<text x="602" y="245" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">0</text>
+</g>
+<g class="stat" style="animation-delay:400ms">
+<text x="32" y="288" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">LICENSE</text>
+<text x="32" y="307" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">MIT</text>
+</g>
+<g class="stat" style="animation-delay:470ms">
+<text x="222" y="288" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">UPDATED</text>
+<text x="222" y="307" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">2026-06-17</text>
+</g>
+<g class="stat" style="animation-delay:540ms">
+<text x="412" y="288" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">DEFAULT BRANCH</text>
+<text x="412" y="307" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">main</text>
+</g>
+<g class="stat" style="animation-delay:610ms">
+<text x="602" y="288" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">SIZE</text>
+<text x="602" y="307" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14">54 KB</text>
+</g>
+<text x="32" y="372" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700">TOPICS</text>
+<text x="92" y="372" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">arduino, arduino-library, arduino-library-manager, callbacks, constant-memory</text>
+<text class="hover-bright" x="788" y="372" fill="#f34b7d" opacity=".82" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="end">Click to open repository</text>
 </svg>
