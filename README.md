@@ -14,10 +14,11 @@ A generated repository showcase maintained from the private profile automation b
 <tbody>
 <tr>
 <td width="50%" valign="top">
+<a id="profile-showcase-javachess"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/JavaChess"><strong>JavaChess</strong></a><br>
-<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | <a href="#profile-showcase-javachess">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -48,10 +49,11 @@ A generated repository showcase maintained from the private profile automation b
 </details>
 </td>
 <td width="50%" valign="top">
+<a id="profile-showcase-microchess"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/MicroChess"><strong>MicroChess</strong></a><br>
-<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | <a href="#profile-showcase-microchess">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -84,10 +86,11 @@ Embedded chess engine designed to use less than 2K of RAM.
 </tr>
 <tr>
 <td width="50%" valign="top">
+<a id="profile-showcase-cpuvolt"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/CPUVolt"><strong>CPUVolt</strong></a><br>
-<sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17 | <a href="#profile-showcase-cpuvolt">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -118,10 +121,11 @@ Read processor Vcc and estimate battery capacity on ATmega-based Arduino project
 </details>
 </td>
 <td width="50%" valign="top">
+<a id="profile-showcase-smooth"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/Smooth"><strong>Smooth</strong></a><br>
-<sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17 | <a href="#profile-showcase-smooth">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -154,10 +158,11 @@ Compact exponential moving averages with constant memory and runtime.
 </tr>
 <tr>
 <td width="50%" valign="top">
+<a id="profile-showcase-bang"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/Bang"><strong>Bang</strong></a><br>
-<sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17 | <a href="#profile-showcase-bang">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -188,10 +193,11 @@ Host-command bridge for microcontrollers that need a PC, Mac, or Linux machine t
 </details>
 </td>
 <td width="50%" valign="top">
+<a id="profile-showcase-arduino-stuff"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/Arduino-Stuff"><strong>Arduino-Stuff</strong></a><br>
-<sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | <a href="#profile-showcase-arduino-stuff">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -224,10 +230,11 @@ Official Arduino libraries and personal embedded projects.
 </tr>
 <tr>
 <td width="50%" valign="top">
+<a id="profile-showcase-bettermenu"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/BetterMenu"><strong>BetterMenu</strong></a><br>
-<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | <a href="#profile-showcase-bettermenu">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -258,10 +265,11 @@ Declarative, adapter-friendly menu infrastructure for embedded projects.
 </details>
 </td>
 <td width="50%" valign="top">
+<a id="profile-showcase-github-traffic"></a>
 <details>
 <summary>
 <a href="https://github.com/ripred/github-traffic"><strong>github-traffic</strong></a><br>
-<sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | <a href="#profile-showcase-github-traffic">focus</a> | Expand / collapse</sub>
 </summary>
 
 <table>
