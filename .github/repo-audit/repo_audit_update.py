@@ -357,17 +357,10 @@ def repo_api_data(repo: Repository) -> dict[str, Any]:
 
 
 def static_badge_url(label: str, message: str, color: str) -> str:
-    """Return a consistent static Shields badge URL."""
-    query = urlencode(
-        {
-            "style": "flat",
-            "label": label,
-            "message": message,
-            "color": color,
-            "labelColor": BADGE_LABEL_COLOR,
-        }
-    )
-    return f"https://img.shields.io/static/v1?{query}"
+    """Return a GitHub-camo-safe static badge URL."""
+    path = "/".join(quote(part, safe="") for part in (label, message, color))
+    query = urlencode({"labelColor": BADGE_LABEL_COLOR})
+    return f"https://flat.badgen.net/badge/{path}?{query}"
 
 
 def static_badge_line(label: str, message: str, color: str, link: str, alt: str | None = None) -> str:
@@ -579,6 +572,13 @@ def existing_platform_message(markdown: str) -> str | None:
         message = (query.get("message") or [""])[0]
         if label == "platform" and message:
             return message
+    badgen_match = re.search(
+        r"https://(?:flat\.)?badgen\.net/badge/platform/([^/)\s]+)/[A-Za-z0-9]+",
+        markdown,
+        flags=re.I,
+    )
+    if badgen_match:
+        return unquote(badgen_match.group(1))
     legacy_match = re.search(
         r"https://img\.shields\.io/badge/platform-([^-)\s]+)-[A-Za-z0-9]+(?:\.svg)?",
         markdown,
@@ -673,6 +673,15 @@ def managed_badge_line(line: str, repo: Repository) -> bool:
         "label=platform",
         "label=code+style",
         "label=code%20style",
+        "badgen.net/badge/license/",
+        "badgen.net/badge/stars/",
+        "badgen.net/badge/forks/",
+        "badgen.net/badge/release/",
+        "badgen.net/badge/tag/",
+        "badgen.net/badge/arduino%20library%20manager/",
+        "badgen.net/badge/python/",
+        "badgen.net/badge/platform/",
+        "badgen.net/badge/code%20style/",
         "img.shields.io/badge/license",
         "img.shields.io/badge/python-",
         "img.shields.io/badge/platform-",
