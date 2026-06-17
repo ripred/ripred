@@ -4,6 +4,8 @@
 
 [![JSON check](https://github.com/ripred/ripred/actions/workflows/jsoncheck.yml/badge.svg)](https://github.com/ripred/ripred/actions/workflows/jsoncheck.yml)
 
+[![Repo Audit Python](https://github.com/ripred/ripred/actions/workflows/repo-audit-python.yml/badge.svg)](https://github.com/ripred/ripred/actions/workflows/repo-audit-python.yml)
+
 ### Hi there, I'm Trent. Welcome to my repositories.
 
 I build Arduino libraries, embedded tools, chess engines, robotics projects, developer utilities, and the occasional game. My interests include language design, FPGAs, compiler design, kernel development, high-speed networking, embedded systems, industrial automation, paleontology, drumming, math, and skydiving.
