@@ -3,8 +3,6 @@
 [![Update Recent Public Work](https://flat.badgen.net/badge/Update%20Recent%20Public%20Work/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/update-recent-public-work.yml)
 [![Python](https://flat.badgen.net/badge/Python/3.x/3776ab?labelColor=24292f)](https://www.python.org/downloads/)
 [![Code style: Ruff](https://flat.badgen.net/badge/Code%20style/ruff/008b8b?labelColor=24292f)](https://github.com/astral-sh/ruff)
-[![Stars](https://flat.badgen.net/badge/Stars/1/bf8700?labelColor=24292f)](https://github.com/ripred/ripred/stargazers)
-[![Forks](https://flat.badgen.net/badge/Forks/0/6f42c1?labelColor=24292f)](https://github.com/ripred/ripred/network/members)
 
 ### Hi there, I'm Trent. Welcome to my repositories.
 

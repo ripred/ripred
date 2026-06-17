@@ -477,6 +477,10 @@
       "name": "ripred",
       "owner": "ripred",
       "private": false,
+      "skip_badge_kinds": [
+        "stars",
+        "forks"
+      ],
       "url": "https://github.com/ripred/ripred",
       "visibility": "PUBLIC"
     },
