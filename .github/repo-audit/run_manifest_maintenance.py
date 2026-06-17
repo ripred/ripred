@@ -40,9 +40,21 @@ def validate_path_parameter(value: str) -> None:
         raise SystemExit(f"target path contains an unsafe segment: {value!r}")
 
 
-def run_for_repo(repo: dict[str, Any], args: argparse.Namespace) -> int:
-    """Run the audit script for one repository."""
-    full_name = f"{repo['owner']}/{repo['name']}"
+def validate_manifest_repositories(args: argparse.Namespace) -> None:
+    """Reject repository filters that are not present in the manifest."""
+    if not args.repo:
+        return
+    repositories = load_manifest(args.manifest)
+    wanted = {value.lower() for value in args.repo}
+    available_names = {repo["name"].lower() for repo in repositories}
+    available_full_names = {f"{repo['owner']}/{repo['name']}".lower() for repo in repositories}
+    missing = wanted - available_names - available_full_names
+    if missing:
+        raise SystemExit("repository is not in manifest: " + ", ".join(sorted(missing)))
+
+
+def run_audit_script(args: argparse.Namespace) -> int:
+    """Run the audit script once for the selected repository set."""
     command = [
         sys.executable,
         str(AUDIT_SCRIPT),
@@ -51,14 +63,13 @@ def run_for_repo(repo: dict[str, Any], args: argparse.Namespace) -> int:
         "--output-dir",
         str(args.output_dir),
         args.command,
-        "--repo",
-        full_name,
     ]
+    for repo in args.repo or []:
+        command.extend(["--repo", repo])
     if args.path and args.command in {"plan", "apply"}:
         command.extend(["--path", args.path])
     if args.keep_worktrees and args.command in {"plan", "apply"}:
         command.append("--keep-worktrees")
-    print(f"== {full_name} ==")
     result = subprocess.run(command, text=True, timeout=args.timeout)
     return result.returncode
 
@@ -79,28 +90,13 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> None:
     """Run the manifest orchestration."""
     args = build_parser().parse_args()
-    repositories = load_manifest(args.manifest)
     if args.path:
         validate_path_parameter(args.path)
     if args.repo:
         for value in args.repo:
             validate_repo_parameter(value)
-        wanted = {value.lower() for value in args.repo}
-        repositories = [
-            repo
-            for repo in repositories
-            if repo["name"].lower() in wanted
-            or f"{repo['owner']}/{repo['name']}".lower() in wanted
-        ]
-        missing = wanted - {
-            repo["name"].lower() for repo in repositories
-        } - {f"{repo['owner']}/{repo['name']}".lower() for repo in repositories}
-        if missing:
-            raise SystemExit("repository is not in manifest: " + ", ".join(sorted(missing)))
-    failures = 0
-    for repo in repositories:
-        failures += 1 if run_for_repo(repo, args) else 0
-    raise SystemExit(1 if failures else 0)
+    validate_manifest_repositories(args)
+    raise SystemExit(run_audit_script(args))
 
 
 if __name__ == "__main__":
