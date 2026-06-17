@@ -800,6 +800,8 @@ def badge_lines(
         "arduino-lint.yml": "Arduino-lint",
         "jsoncheck.yml": "JSON check",
         "ant.yml": "Java CI",
+        "repo-audit-python.yml": "Repositories Audit",
+        "repo-audit-python.yaml": "Repositories Audit",
     }
     for workflow in sorted(workflows, key=workflow_sort_key):
         if workflow.lower() in skipped_workflow_badges(repo):
