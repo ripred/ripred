@@ -16,19 +16,8 @@ A generated repository showcase maintained from the private profile automation b
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/JavaChess"><strong>JavaChess</strong></a><br>
-<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -61,19 +50,8 @@ A generated repository showcase maintained from the private profile automation b
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/MicroChess"><strong>MicroChess</strong></a><br>
-<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -108,19 +86,8 @@ Embedded chess engine designed to use less than 2K of RAM.
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/CPUVolt"><strong>CPUVolt</strong></a><br>
-<sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -153,19 +120,8 @@ Read processor Vcc and estimate battery capacity on ATmega-based Arduino project
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/Smooth"><strong>Smooth</strong></a><br>
-<sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -200,19 +156,8 @@ Compact exponential moving averages with constant memory and runtime.
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/Bang"><strong>Bang</strong></a><br>
-<sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -245,19 +190,8 @@ Host-command bridge for microcontrollers that need a PC, Mac, or Linux machine t
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/Arduino-Stuff"><strong>Arduino-Stuff</strong></a><br>
-<sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -292,19 +226,8 @@ Official Arduino libraries and personal embedded projects.
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/BetterMenu"><strong>BetterMenu</strong></a><br>
-<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
@@ -337,19 +260,8 @@ Declarative, adapter-friendly menu infrastructure for embedded projects.
 <td width="50%" valign="top">
 <details>
 <summary>
-<table>
-<tbody>
-<tr>
-<td width="72%" valign="top">
 <a href="https://github.com/ripred/github-traffic"><strong>github-traffic</strong></a><br>
-<sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17</sub>
-</td>
-<td width="28%" align="right" valign="top">
-<sub>Expand / collapse</sub>
-</td>
-</tr>
-</tbody>
-</table>
+<sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
