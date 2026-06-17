@@ -857,19 +857,50 @@ def generated_workflow_template(repo: Repository, workflow: str) -> str | None:
     return None
 
 
+def generated_workflow_templates(repo: Repository, workflow: str) -> list[str]:
+    """Return current and legacy generated workflow templates."""
+    template = generated_workflow_template(repo, workflow)
+    if template is None:
+        return []
+    legacy = template.replace("actions/checkout@v6", "actions/checkout@v4")
+    if legacy == template:
+        return [template]
+    return [template, legacy]
+
+
 def remove_skipped_generated_workflows(repo: Repository, repo_dir: Path) -> list[str]:
     """Remove generated workflows that are marked inapplicable."""
     removed = []
     for workflow in repo.skip_workflows:
         path = repo_dir / ".github" / "workflows" / workflow
-        template = generated_workflow_template(repo, workflow)
-        if not path.exists() or template is None:
+        templates = generated_workflow_templates(repo, workflow)
+        if not path.exists() or not templates:
             continue
-        if read_text(path).strip() != template.strip():
+        if read_text(path).strip() not in {template.strip() for template in templates}:
             continue
         path.unlink()
         removed.append(workflow)
     return removed
+
+
+def refresh_generated_workflows(repo: Repository, repo_dir: Path) -> list[str]:
+    """Update generated workflows that still match a known legacy template."""
+    refreshed = []
+    for workflow in workflow_files(repo_dir):
+        path = repo_dir / ".github" / "workflows" / workflow
+        current = generated_workflow_template(repo, workflow)
+        templates = generated_workflow_templates(repo, workflow)
+        if current is None or not templates:
+            continue
+        existing = read_text(path).strip()
+        if existing == current.strip():
+            continue
+        legacy_templates = {template.strip() for template in templates[1:]}
+        if existing not in legacy_templates:
+            continue
+        if write_if_changed(path, current):
+            refreshed.append(workflow)
+    return refreshed
 
 
 def apply_repository(
@@ -891,6 +922,11 @@ def apply_repository(
     removed = remove_skipped_generated_workflows(repo, target)
     if removed:
         changes.append("remove inapplicable generated workflow(s): " + ", ".join(removed))
+        workflows = workflow_files(target)
+
+    refreshed = refresh_generated_workflows(repo, target)
+    if refreshed:
+        changes.append("refresh generated workflow(s): " + ", ".join(refreshed))
         workflows = workflow_files(target)
 
     if target_path:
