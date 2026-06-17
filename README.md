@@ -1,6 +1,5 @@
 [![JSON check](https://flat.badgen.net/badge/JSON%20check/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/jsoncheck.yml)
-[![Repositories Audit](https://flat.badgen.net/badge/Repositories%20Audit/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/repo-audit-python.yml)
-[![Update Recent Public Work](https://flat.badgen.net/badge/Update%20Recent%20Public%20Work/passing/2da44e?labelColor=24292f)](https://github.com/ripred/ripred/actions/workflows/update-recent-public-work.yml)
+![Profile content](https://flat.badgen.net/badge/Profile%20content/generated/0969da?labelColor=24292f)
 
 ### Hi there, I'm Trent. Welcome to my repositories.
 
