@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" role="img" aria-labelledby="title desc" viewBox="0 0 820 420">
-<style>@keyframes pulse-ring{0%,100%{opacity:.28;transform:scale(1)}50%{opacity:.72;transform:scale(1.08)}}@keyframes draw-card{from{stroke-dashoffset:2500}to{stroke-dashoffset:0}}@keyframes accent-glow{0%,100%{opacity:.72}50%{opacity:1}}@keyframes stat-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}svg .hover-lift{transition:transform .24s ease,opacity .24s ease}svg:hover .hover-lift{transform:translateY(-2px)}svg:hover .hover-bright{opacity:1}.pulse-ring{transform-box:fill-box;transform-origin:center;animation:pulse-ring 3.8s ease-in-out infinite}.card-outline{stroke-dasharray:2500;stroke-dashoffset:2500;animation:draw-card 1.6s ease-out forwards}.accent-bar{animation:accent-glow 4.2s ease-in-out infinite}.stat{opacity:0;animation:stat-in .5s ease-out forwards}@media (prefers-reduced-motion: reduce){.pulse-ring,.card-outline,.accent-bar,.stat{animation:none;opacity:1;stroke-dashoffset:0;transform:none}}</style>
+<style>@keyframes pulse-ring{0%,100%{opacity:.28;transform:scale(1)}50%{opacity:.72;transform:scale(1.08)}}@keyframes draw-card{from{stroke-dashoffset:2500}to{stroke-dashoffset:0}}@keyframes accent-glow{0%,100%{opacity:.72}50%{opacity:1}}@keyframes stat-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}.pulse-ring{transform-box:fill-box;transform-origin:center;opacity:.34;animation:pulse-ring .9s ease-out .15s 1}.card-outline{stroke-dasharray:2500;stroke-dashoffset:2500;animation:draw-card 1.6s ease-out forwards}.accent-bar{animation:accent-glow 4.2s ease-in-out infinite}.stat{opacity:0;animation:stat-in .5s ease-out forwards}@media (prefers-reduced-motion: reduce){.pulse-ring,.card-outline,.accent-bar,.stat{animation:none;opacity:1;stroke-dashoffset:0;transform:none}}</style>
 <title id="title">BetterMenu repository details</title>
 <desc id="desc">Generated repository detail card for BetterMenu.</desc>
 <rect class="card-outline" x="1.5" y="1.5" width="817" height="417" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="3"/>
-<rect class="accent-bar hover-bright" x="1.5" y="1.5" width="817" height="12" rx="8" fill="#f34b7d" opacity=".78"/>
-<g class="hover-lift">
+<rect class="accent-bar" x="1.5" y="1.5" width="817" height="12" rx="8" fill="#f34b7d" opacity=".78"/>
+<g>
 <circle class="pulse-ring" cx="62" cy="76" r="41" fill="none" stroke="#f34b7d" stroke-width="5"/>
 <circle cx="62" cy="76" r="34" fill="#f34b7d" stroke="#d0d7de" stroke-width="2"/>
 <text x="62" y="78" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" dominant-baseline="central">BM</text>
@@ -46,5 +46,5 @@
 </g>
 <text x="32" y="372" fill="#57606a" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="700">TOPICS</text>
 <text x="92" y="372" fill="#24292f" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">arduino, arduino-library, cpp, embedded, esp32-arduino</text>
-<text class="hover-bright" x="788" y="372" fill="#f34b7d" opacity=".82" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="end">Click to open repository</text>
+<text x="788" y="372" fill="#f34b7d" opacity=".82" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="end">Click to open repository</text>
 </svg>
