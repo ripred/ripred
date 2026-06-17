@@ -572,8 +572,8 @@ def uses_ruff(repo_dir: Path) -> bool:
 
 def existing_platform_message(markdown: str) -> str | None:
     """Return an existing platform badge message if one is declared."""
-    static_match = re.search(r"https://img\.shields\.io/static/v1\?([^\])\s]+)", markdown, flags=re.I)
-    if static_match:
+    static_matches = re.finditer(r"https://img\.shields\.io/static/v1\?([^\])\s]+)", markdown, flags=re.I)
+    for static_match in static_matches:
         query = parse_qs(urlparse("https://img.shields.io/static/v1?" + static_match.group(1)).query)
         label = (query.get("label") or [""])[0].lower()
         message = (query.get("message") or [""])[0]
@@ -721,7 +721,7 @@ def workflow_sort_key(workflow: str) -> tuple[int, str]:
 
 def workflow_badge_state(repo: Repository, workflow: str) -> tuple[str, str] | None:
     """Return static badge message and color for a workflow's latest run."""
-    run_data = latest_workflow_run(repo, workflow)
+    run_data = latest_completed_workflow_run(repo, workflow) or latest_workflow_run(repo, workflow)
     if not run_data:
         return None
     status = (run_data.get("status") or "").lower()
@@ -1362,6 +1362,33 @@ def latest_workflow_run(repo: Repository, workflow: str) -> dict[str, Any] | Non
             repo.full_name,
             "--workflow",
             workflow,
+            "--limit",
+            "1",
+            "--json",
+            "databaseId,status,conclusion,headBranch,headSha,createdAt,url",
+        ],
+        check=False,
+        timeout=30,
+    )
+    if result.returncode != 0:
+        return None
+    runs = json.loads(result.stdout or "[]")
+    return runs[0] if runs else None
+
+
+def latest_completed_workflow_run(repo: Repository, workflow: str) -> dict[str, Any] | None:
+    """Return the latest completed run for a workflow."""
+    result = run(
+        [
+            "gh",
+            "run",
+            "list",
+            "--repo",
+            repo.full_name,
+            "--workflow",
+            workflow,
+            "--status",
+            "completed",
             "--limit",
             "1",
             "--json",
