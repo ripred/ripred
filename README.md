@@ -42,9 +42,17 @@ My bespoke repository showcase.
 <sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/JavaChess"><img src="assets/profile-showcase/javachess-details.svg" alt="JavaChess repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/JavaChess">Repository</a> | <a href="https://github.com/ripred/JavaChess/issues">Issues</a> | <a href="https://github.com/ripred/JavaChess/actions">Actions</a> | <a href="https://github.com/ripred/JavaChess/releases">Releases</a> | <a href="https://github.com/ripred/JavaChess/blob/master/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 <td width="33.3333%" valign="top">
@@ -56,9 +64,17 @@ My bespoke repository showcase.
 <sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/MicroChess"><img src="assets/profile-showcase/microchess-details.svg" alt="MicroChess repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/MicroChess">Repository</a> | <a href="https://github.com/ripred/MicroChess/issues">Issues</a> | <a href="https://github.com/ripred/MicroChess/actions">Actions</a> | <a href="https://github.com/ripred/MicroChess/releases">Releases</a> | <a href="https://github.com/ripred/MicroChess/blob/main/README.md">README</a> | <a href="https://github.com/ripred/microchess">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 <td width="33.3333%" valign="top">
@@ -70,9 +86,17 @@ My bespoke repository showcase.
 <sub>C++ | Public | Stars: 81 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/CPUVolt"><img src="assets/profile-showcase/cpuvolt-details.svg" alt="CPUVolt repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/CPUVolt">Repository</a> | <a href="https://github.com/ripred/CPUVolt/issues">Issues</a> | <a href="https://github.com/ripred/CPUVolt/actions">Actions</a> | <a href="https://github.com/ripred/CPUVolt/releases">Releases</a> | <a href="https://github.com/ripred/CPUVolt/blob/main/README.md">README</a> | <a href="https://github.com/ripred/CPUVolt">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 </tr>
@@ -86,9 +110,17 @@ My bespoke repository showcase.
 <sub>C++ | Public | Stars: 63 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/Smooth"><img src="assets/profile-showcase/smooth-details.svg" alt="Smooth repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/Smooth">Repository</a> | <a href="https://github.com/ripred/Smooth/issues">Issues</a> | <a href="https://github.com/ripred/Smooth/actions">Actions</a> | <a href="https://github.com/ripred/Smooth/releases">Releases</a> | <a href="https://github.com/ripred/Smooth/blob/main/README.md">README</a> | <a href="https://github.com/ripred/Smooth">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 <td width="33.3333%" valign="top">
@@ -100,9 +132,17 @@ My bespoke repository showcase.
 <sub>Python | Public | Stars: 22 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/Bang"><img src="assets/profile-showcase/bang-details.svg" alt="Bang repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/Bang">Repository</a> | <a href="https://github.com/ripred/Bang/issues">Issues</a> | <a href="https://github.com/ripred/Bang/actions">Actions</a> | <a href="https://github.com/ripred/Bang/releases">Releases</a> | <a href="https://github.com/ripred/Bang/blob/main/README.md">README</a> | <a href="https://github.com/ripred/Bang">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 <td width="33.3333%" valign="top">
@@ -114,9 +154,17 @@ My bespoke repository showcase.
 <sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/Arduino-Stuff"><img src="assets/profile-showcase/arduino-stuff-details.svg" alt="Arduino-Stuff repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/Arduino-Stuff">Repository</a> | <a href="https://github.com/ripred/Arduino-Stuff/issues">Issues</a> | <a href="https://github.com/ripred/Arduino-Stuff/actions">Actions</a> | <a href="https://github.com/ripred/Arduino-Stuff/releases">Releases</a> | <a href="https://github.com/ripred/Arduino-Stuff/blob/main/README.md">README</a> | <a href="https://github.com/ripred/Arduino-Stuff">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 </tr>
@@ -130,9 +178,17 @@ My bespoke repository showcase.
 <sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/BetterMenu"><img src="assets/profile-showcase/bettermenu-details.svg" alt="BetterMenu repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/BetterMenu">Repository</a> | <a href="https://github.com/ripred/BetterMenu/issues">Issues</a> | <a href="https://github.com/ripred/BetterMenu/actions">Actions</a> | <a href="https://github.com/ripred/BetterMenu/releases">Releases</a> | <a href="https://github.com/ripred/BetterMenu/blob/main/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 <td width="33.3333%" valign="top">
@@ -144,9 +200,17 @@ My bespoke repository showcase.
 <sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
 <a href="https://github.com/ripred/github-traffic"><img src="assets/profile-showcase/github-traffic-details.svg" alt="github-traffic repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/github-traffic">Repository</a> | <a href="https://github.com/ripred/github-traffic/issues">Issues</a> | <a href="https://github.com/ripred/github-traffic/actions">Actions</a> | <a href="https://github.com/ripred/github-traffic/releases">Releases</a> | <a href="https://github.com/ripred/github-traffic/blob/main/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 </td>
 <td width="33.3333%" valign="top">
