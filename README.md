@@ -1,3 +1,7 @@
+[![Update Recent Public Work](https://github.com/ripred/ripred/actions/workflows/update-recent-public-work.yml/badge.svg)](https://github.com/ripred/ripred/actions/workflows/update-recent-public-work.yml)
+[![Stars](https://flat.badgen.net/github/stars/ripred/ripred)](https://github.com/ripred/ripred/stargazers)
+[![Forks](https://flat.badgen.net/github/forks/ripred/ripred)](https://github.com/ripred/ripred/network/members)
+
 ### Hi there, I'm Trent. Welcome to my repositories.
 
 I build Arduino libraries, embedded tools, chess engines, robotics projects, developer utilities, and the occasional game. My interests include language design, FPGAs, compiler design, kernel development, high-speed networking, embedded systems, industrial automation, paleontology, drumming, math, and skydiving.
