@@ -12,7 +12,7 @@ import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import parse_qs, quote, unquote, urlencode, urlparse
 from urllib.request import urlopen
 
 
@@ -20,6 +20,39 @@ MANIFEST_PATH = Path(__file__).with_name("repositories.json")
 WORK_ROOT = Path.cwd() / ".repo-maintenance-worktrees"
 REPOSITORY_RE = re.compile(r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)?$")
 TARGET_PATH_RE = re.compile(r"^[A-Za-z0-9._/-]+$")
+BADGE_LABEL_COLOR = "24292f"
+BADGE_COLORS = {
+    "success": "2da44e",
+    "failure": "cf222e",
+    "pending": "8250df",
+    "neutral": "6e7781",
+    "arduino": "00878f",
+    "python": "3776ab",
+    "style": "008b8b",
+    "release": "8250df",
+    "license": "0969da",
+    "stars": "bf8700",
+    "forks": "6f42c1",
+}
+WORKFLOW_PRIORITY = {
+    "ci.yml": 10,
+    "ci.yaml": 10,
+    "build.yml": 10,
+    "build.yaml": 10,
+    "release.yml": 15,
+    "release.yaml": 15,
+    "arduino_test_runner.yml": 20,
+    "ant.yml": 20,
+    "ubuntu.yml": 30,
+    "macos.yml": 31,
+    "windows.yml": 32,
+    "style.yml": 40,
+    "arduino-lint.yml": 41,
+    "jsoncheck.yml": 50,
+    "install.yml": 60,
+    "standalone.yml": 61,
+}
+REPO_API_CACHE: dict[str, dict[str, Any]] = {}
 
 
 @dataclass
@@ -306,7 +339,41 @@ def skipped_badge_kinds(repo: Repository) -> set[str]:
 
 def workflow_badges_allowed(repo: Repository) -> bool:
     """Return whether GitHub Actions badge images should be shown."""
-    return not repo.private
+    return True
+
+
+def repo_api_data(repo: Repository) -> dict[str, Any]:
+    """Return repository metadata from the GitHub API."""
+    cached = REPO_API_CACHE.get(repo.full_name)
+    if cached is not None:
+        return cached
+    result = run(["gh", "api", f"repos/{repo.full_name}"], check=False, timeout=60)
+    if result.returncode != 0:
+        REPO_API_CACHE[repo.full_name] = {}
+        return {}
+    data = json.loads(result.stdout or "{}")
+    REPO_API_CACHE[repo.full_name] = data
+    return data
+
+
+def static_badge_url(label: str, message: str, color: str) -> str:
+    """Return a consistent static Shields badge URL."""
+    query = urlencode(
+        {
+            "style": "flat",
+            "label": label,
+            "message": message,
+            "color": color,
+            "labelColor": BADGE_LABEL_COLOR,
+        }
+    )
+    return f"https://img.shields.io/static/v1?{query}"
+
+
+def static_badge_line(label: str, message: str, color: str, link: str, alt: str | None = None) -> str:
+    """Return a canonical Markdown badge line."""
+    badge_alt = alt or label
+    return f"[![{badge_alt}]({static_badge_url(label, message, color)})]({link})"
 
 
 def read_text(path: Path) -> str:
@@ -447,6 +514,81 @@ def arduino_badge_available(name: str) -> bool:
         return False
 
 
+def license_message(repo: Repository, repo_dir: Path) -> str | None:
+    """Return a displayable license value."""
+    data = repo_api_data(repo)
+    api_license = data.get("license") or {}
+    spdx_id = (api_license.get("spdx_id") or "").strip()
+    if spdx_id and spdx_id.upper() != "NOASSERTION":
+        return spdx_id.upper()
+    if repo.license_key and repo.license_key.lower() not in {"other", "noassertion"}:
+        return repo.license_key.upper()
+    if has_license(repo, repo_dir):
+        return "custom"
+    return None
+
+
+def repo_count_message(repo: Repository, field: str) -> str:
+    """Return a repository count value from GitHub metadata."""
+    value = repo_api_data(repo).get(field)
+    if isinstance(value, int):
+        return str(value)
+    return "0"
+
+
+def python_version_message(repo_dir: Path) -> str | None:
+    """Return the detected Python version requirement."""
+    pyproject = repo_dir / "pyproject.toml"
+    if pyproject.exists():
+        match = re.search(r"(?m)^\s*requires-python\s*=\s*[\"']([^\"']+)[\"']", read_text(pyproject))
+        if match:
+            return match.group(1).strip()
+    setup_cfg = repo_dir / "setup.cfg"
+    if setup_cfg.exists():
+        match = re.search(r"(?m)^\s*python_requires\s*=\s*([^\n]+)", read_text(setup_cfg))
+        if match:
+            return match.group(1).strip()
+    return "3.x" if any(path.suffix == ".py" for path in repo_dir.rglob("*.py") if ".git" not in path.parts) else None
+
+
+def uses_ruff(repo_dir: Path) -> bool:
+    """Return whether the repository declares or runs Ruff."""
+    candidates = [
+        repo_dir / "ruff.toml",
+        repo_dir / ".ruff.toml",
+        repo_dir / "pyproject.toml",
+        repo_dir / "requirements.txt",
+        repo_dir / "requirements-dev.txt",
+    ]
+    for path in candidates:
+        text = read_text(path).lower()
+        if "ruff" in text:
+            return True
+    workflows = repo_dir / ".github" / "workflows"
+    if workflows.exists():
+        return any("ruff" in read_text(path).lower() for path in workflows.iterdir() if path.is_file())
+    return False
+
+
+def existing_platform_message(markdown: str) -> str | None:
+    """Return an existing platform badge message if one is declared."""
+    static_match = re.search(r"https://img\.shields\.io/static/v1\?([^\])\s]+)", markdown, flags=re.I)
+    if static_match:
+        query = parse_qs(urlparse("https://img.shields.io/static/v1?" + static_match.group(1)).query)
+        label = (query.get("label") or [""])[0].lower()
+        message = (query.get("message") or [""])[0]
+        if label == "platform" and message:
+            return message
+    legacy_match = re.search(
+        r"https://img\.shields\.io/badge/platform-([^-)\s]+)-[A-Za-z0-9]+(?:\.svg)?",
+        markdown,
+        flags=re.I,
+    )
+    if legacy_match:
+        return unquote(legacy_match.group(1)).replace("--", "-")
+    return None
+
+
 def visible_markdown(markdown: str) -> str:
     """Remove Markdown comments before checking visible badges."""
     return re.sub(r"<!--.*?-->", "", markdown, flags=re.S)
@@ -486,22 +628,71 @@ def has_badge_kind(
     return False
 
 
+MARKDOWN_BADGE_RE = re.compile(r"\[!\[[^\]]*\]\([^)]+\)\]\([^)]+\)")
+
+
+def normalize_badge_lines(markdown: str) -> str:
+    """Split packed Markdown badge rows into one badge per line."""
+    normalized = []
+    for line in markdown.splitlines():
+        stripped = line.strip()
+        matches = list(MARKDOWN_BADGE_RE.finditer(stripped))
+        if len(matches) > 1 and not MARKDOWN_BADGE_RE.sub("", stripped).strip():
+            normalized.extend(match.group(0) for match in matches)
+            continue
+        normalized.append(line)
+    return "\n".join(normalized).rstrip() + ("\n" if markdown.endswith("\n") else "")
+
+
+def managed_badge_line(line: str, repo: Repository) -> bool:
+    """Return whether a badge line is owned by the audit tool."""
+    if not line_is_badge(line):
+        return False
+    lower = line.lower()
+    full_name = repo.full_name.lower()
+    managed_fragments = [
+        "/actions/workflows/",
+        "ardu-badge.com",
+        f"github/license/{full_name}",
+        f"github/stars/{full_name}",
+        f"github/forks/{full_name}",
+        f"github/release/{full_name}",
+        f"github/tag/{full_name}",
+        "/stargazers)",
+        "/network/members)",
+        "/releases/latest)",
+        "/tags)",
+        "label=license",
+        "label=stars",
+        "label=forks",
+        "label=release",
+        "label=tag",
+        "label=arduino+library+manager",
+        "label=arduino%20library%20manager",
+        "label=python",
+        "label=platform",
+        "label=code+style",
+        "label=code%20style",
+        "img.shields.io/badge/license",
+        "img.shields.io/badge/python-",
+        "img.shields.io/badge/platform-",
+    ]
+    if any(fragment in lower for fragment in managed_fragments):
+        return True
+    return "ruff" in lower and ("code%20style" in lower or "code style" in lower)
+
+
 def remove_skipped_badges(markdown: str, repo: Repository) -> str:
-    """Remove generated badge lines that have been marked inapplicable."""
+    """Remove generated badge lines before canonical regeneration."""
     workflow_skips = skipped_workflow_badges(repo)
     kind_skips = skipped_badge_kinds(repo)
     kept = []
     changed = False
-    for line in markdown.splitlines():
+    normalized = normalize_badge_lines(markdown)
+    for line in normalized.splitlines():
         lower = line.lower()
-        remove = any(f"actions/workflows/{workflow}/badge.svg" in lower for workflow in workflow_skips)
-        remove = remove or (
-            not workflow_badges_allowed(repo)
-            and (
-                ("actions/workflows/" in lower and "badge.svg" in lower)
-                or f"github/actions/workflow/status/{repo.full_name}".lower() in lower
-            )
-        )
+        remove = managed_badge_line(line, repo)
+        remove = remove or any(f"actions/workflows/{workflow}" in lower for workflow in workflow_skips)
         remove = remove or ("arduino_library_manager" in kind_skips and "ardu-badge.com/badge/" in lower)
         remove = remove or ("release" in kind_skips and f"github/release/{repo.full_name}".lower() in lower)
         remove = remove or ("tag" in kind_skips and f"github/tag/{repo.full_name}".lower() in lower)
@@ -513,14 +704,52 @@ def remove_skipped_badges(markdown: str, repo: Repository) -> str:
             continue
         kept.append(line)
     if not changed:
-        return markdown
-    return "\n".join(kept).rstrip() + "\n"
+        return normalized.lstrip("\n")
+    return "\n".join(kept).strip("\n") + "\n"
 
 
 def workflow_label(workflow: str) -> str:
     """Convert a workflow filename into a badge label."""
     words = workflow.rsplit(".", 1)[0].replace("_", " ").replace("-", " ").split()
     return " ".join("CI" if word.lower() == "ci" else word.title() for word in words)
+
+
+def workflow_sort_key(workflow: str) -> tuple[int, str]:
+    """Return a stable badge order for workflows."""
+    return (WORKFLOW_PRIORITY.get(workflow.lower(), 100), workflow.lower())
+
+
+def workflow_badge_state(repo: Repository, workflow: str) -> tuple[str, str] | None:
+    """Return static badge message and color for a workflow's latest run."""
+    run_data = latest_workflow_run(repo, workflow)
+    if not run_data:
+        return None
+    status = (run_data.get("status") or "").lower()
+    conclusion = (run_data.get("conclusion") or "").lower()
+    if status == "completed":
+        if conclusion == "success":
+            return "passing", BADGE_COLORS["success"]
+        if conclusion:
+            return conclusion.replace("_", " "), BADGE_COLORS["failure"]
+        return "completed", BADGE_COLORS["neutral"]
+    if status:
+        return status.replace("_", " "), BADGE_COLORS["pending"]
+    return None
+
+
+def workflow_badge_line(repo: Repository, workflow: str, label: str) -> str | None:
+    """Return a canonical workflow status badge line."""
+    state = workflow_badge_state(repo, workflow)
+    if state is None:
+        return None
+    message, color = state
+    return static_badge_line(
+        label,
+        message,
+        color,
+        f"https://github.com/{repo.full_name}/actions/workflows/{workflow}",
+        alt=label,
+    )
 
 
 def badge_lines(
@@ -531,6 +760,7 @@ def badge_lines(
     *,
     target_path: str = "",
     target_paths: list[str] | None = None,
+    platform_message: str | None = None,
 ) -> list[str]:
     """Build visible README badge lines that are not already present."""
     lines = []
@@ -549,87 +779,130 @@ def badge_lines(
                 return
         if kind and kind.lower() in skipped_badge_kinds(repo):
             return
-        if not has_badge_kind(readme, repo, kind=kind, workflow=workflow):
+        if line not in lines:
             lines.append(line)
 
-    if "arduino_test_runner.yml" in workflows:
-        add(
-            f"[![Arduino CI](https://github.com/{repo.full_name}/actions/workflows/arduino_test_runner.yml/badge.svg)]"
-            f"(https://github.com/{repo.full_name}/actions/workflows/arduino_test_runner.yml)",
-            workflow="arduino_test_runner.yml",
-        )
-    if "arduino-lint.yml" in workflows:
-        add(
-            f"[![Arduino-lint](https://github.com/{repo.full_name}/actions/workflows/arduino-lint.yml/badge.svg)]"
-            f"(https://github.com/{repo.full_name}/actions/workflows/arduino-lint.yml)",
-            workflow="arduino-lint.yml",
-        )
-    if "jsoncheck.yml" in workflows:
-        add(
-            f"[![JSON check](https://github.com/{repo.full_name}/actions/workflows/jsoncheck.yml/badge.svg)]"
-            f"(https://github.com/{repo.full_name}/actions/workflows/jsoncheck.yml)",
-            workflow="jsoncheck.yml",
-        )
-    if "ant.yml" in workflows:
-        add(
-            f"[![Java CI](https://github.com/{repo.full_name}/actions/workflows/ant.yml/badge.svg)]"
-            f"(https://github.com/{repo.full_name}/actions/workflows/ant.yml)",
-            workflow="ant.yml",
-        )
-
-    specific = {"arduino_test_runner.yml", "arduino-lint.yml", "jsoncheck.yml", "ant.yml"}
-    for workflow in workflows:
-        if workflow in specific:
-            continue
+    workflow_labels = {
+        "release.yml": "Release CI",
+        "release.yaml": "Release CI",
+        "arduino_test_runner.yml": "Arduino CI",
+        "arduino-lint.yml": "Arduino-lint",
+        "jsoncheck.yml": "JSON check",
+        "ant.yml": "Java CI",
+    }
+    for workflow in sorted(workflows, key=workflow_sort_key):
         if workflow.lower() in skipped_workflow_badges(repo):
             continue
         if target_path and not workflow_mentions_path(repo_dir, workflow, target_path):
-            continue
-        label = workflow_label(workflow)
-        add(
-            f"[![{label}](https://github.com/{repo.full_name}/actions/workflows/{workflow}/badge.svg)]"
-            f"(https://github.com/{repo.full_name}/actions/workflows/{workflow})",
-            workflow=workflow,
-        )
+            if workflow != "jsoncheck.yml" or not has_json_files(scoped_file_paths):
+                continue
+        label = workflow_labels.get(workflow, workflow_label(workflow))
+        line = workflow_badge_line(repo, workflow, label)
+        if line:
+            add(line, workflow=workflow)
 
     if target_path:
         return lines
 
     if root_library and arduino_badge_available(root_library):
-        encoded = quote(root_library)
         add(
-            f"[![Arduino Library Manager](https://www.ardu-badge.com/badge/{encoded}.svg)]"
-            f"(https://www.ardu-badge.com/{encoded})",
+            static_badge_line(
+                "Arduino Library Manager",
+                "available",
+                BADGE_COLORS["arduino"],
+                f"https://www.ardu-badge.com/{quote(root_library)}",
+                alt="Arduino Library Manager",
+            ),
             kind="arduino_library_manager",
+        )
+    python_message = python_version_message(repo_dir)
+    if python_message:
+        add(
+            static_badge_line(
+                "Python",
+                python_message,
+                BADGE_COLORS["python"],
+                "https://www.python.org/downloads/",
+                alt="Python",
+            ),
+            kind="python",
+        )
+    if platform_message:
+        add(
+            static_badge_line(
+                "Platform",
+                platform_message,
+                BADGE_COLORS["neutral"],
+                f"https://github.com/{repo.full_name}",
+                alt="Platform",
+            ),
+            kind="platform",
+        )
+    if uses_ruff(repo_dir):
+        add(
+            static_badge_line(
+                "Code style",
+                "ruff",
+                BADGE_COLORS["style"],
+                "https://github.com/astral-sh/ruff",
+                alt="Code style: Ruff",
+            ),
+            kind="code_style",
         )
     if release:
         add(
-            f"[![GitHub release](https://flat.badgen.net/github/release/{repo.full_name})]"
-            f"(https://github.com/{repo.full_name}/releases/latest)",
+            static_badge_line(
+                "Release",
+                release,
+                BADGE_COLORS["release"],
+                f"https://github.com/{repo.full_name}/releases/latest",
+                alt="Release",
+            ),
             kind="release",
         )
     elif tag:
         add(
-            f"[![GitHub tag](https://flat.badgen.net/github/tag/{repo.full_name})]"
-            f"(https://github.com/{repo.full_name}/tags)",
+            static_badge_line(
+                "Tag",
+                tag,
+                BADGE_COLORS["release"],
+                f"https://github.com/{repo.full_name}/tags",
+                alt="Tag",
+            ),
             kind="tag",
         )
-    if has_license(repo, repo_dir):
+    license_value = license_message(repo, repo_dir)
+    if license_value:
         license_file = license_path(repo_dir)
         add(
-            f"[![License](https://flat.badgen.net/github/license/{repo.full_name})]"
-            f"(https://github.com/{repo.full_name}/blob/{repo.default_branch}/{license_file})",
+            static_badge_line(
+                "License",
+                license_value,
+                BADGE_COLORS["license"],
+                f"https://github.com/{repo.full_name}/blob/{repo.default_branch}/{license_file}",
+                alt="License",
+            ),
             kind="license",
         )
     if not repo.private:
         add(
-            f"[![Stars](https://flat.badgen.net/github/stars/{repo.full_name})]"
-            f"(https://github.com/{repo.full_name}/stargazers)",
+            static_badge_line(
+                "Stars",
+                repo_count_message(repo, "stargazers_count"),
+                BADGE_COLORS["stars"],
+                f"https://github.com/{repo.full_name}/stargazers",
+                alt="Stars",
+            ),
             kind="stars",
         )
         add(
-            f"[![Forks](https://flat.badgen.net/github/forks/{repo.full_name})]"
-            f"(https://github.com/{repo.full_name}/network/members)",
+            static_badge_line(
+                "Forks",
+                repo_count_message(repo, "forks_count"),
+                BADGE_COLORS["forks"],
+                f"https://github.com/{repo.full_name}/network/members",
+                alt="Forks",
+            ),
             kind="forks",
         )
     return lines
@@ -676,11 +949,7 @@ def badge_insertion_index(lines: list[str]) -> int:
         index += 1
         while index < len(lines) and not lines[index].strip():
             index += 1
-        while index < len(lines) and line_is_badge(lines[index]):
-            index += 1
         return index
-    while index < len(lines) and line_is_badge(lines[index]):
-        index += 1
     return index
 
 
@@ -720,10 +989,16 @@ def insert_badges(
         return markdown
     lines = markdown.splitlines()
     index = badge_insertion_index(lines)
-    block = additions + [""]
+    before = lines[:index]
+    after = lines[index:]
+    while before and not before[-1].strip():
+        before.pop()
+    while after and not after[0].strip():
+        after.pop(0)
+    block = [""] + additions + [""]
     if index == 0:
-        return "\n".join(block + lines).rstrip() + "\n"
-    return "\n".join(lines[:index] + block + lines[index:]).rstrip() + "\n"
+        return "\n".join(additions + [""] + after).rstrip() + "\n"
+    return "\n".join(before + block + after).rstrip() + "\n"
 
 
 def json_workflow() -> str:
@@ -992,7 +1267,8 @@ def apply_repository(
         readme_path = target / target_path / "README.md"
     else:
         readme_path = root_readme(target)
-    readme = remove_skipped_badges(read_text(readme_path), repo)
+    raw_readme = read_text(readme_path)
+    readme = remove_skipped_badges(raw_readme, repo)
     additions = badge_lines(
         repo,
         target,
@@ -1000,6 +1276,7 @@ def apply_repository(
         readme,
         target_path=target_path,
         target_paths=target_paths,
+        platform_message=existing_platform_message(raw_readme) if not target_path else None,
     )
     title = display_title(target_path) if target_path else None
     body = folder_readme_body(repo, target_path, target_paths) if target_path else None
