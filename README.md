@@ -10,6 +10,10 @@ I build Arduino libraries, embedded tools, chess engines, robotics projects, dev
 <!-- PROFILE-SHOWCASE:START -->
 A generated repository showcase maintained from the private profile automation backend.
 
+<table>
+<tbody>
+<tr>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -53,6 +57,8 @@ A generated repository showcase maintained from the private profile automation b
 </tbody>
 </table>
 </details>
+</td>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -96,6 +102,10 @@ Embedded chess engine designed to use less than 2K of RAM.
 </tbody>
 </table>
 </details>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -139,6 +149,8 @@ Read processor Vcc and estimate battery capacity on ATmega-based Arduino project
 </tbody>
 </table>
 </details>
+</td>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -182,6 +194,10 @@ Compact exponential moving averages with constant memory and runtime.
 </tbody>
 </table>
 </details>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -225,6 +241,8 @@ Host-command bridge for microcontrollers that need a PC, Mac, or Linux machine t
 </tbody>
 </table>
 </details>
+</td>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -268,6 +286,10 @@ Official Arduino libraries and personal embedded projects.
 </tbody>
 </table>
 </details>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -311,6 +333,8 @@ Declarative, adapter-friendly menu infrastructure for embedded projects.
 </tbody>
 </table>
 </details>
+</td>
+<td width="50%" valign="top">
 <details>
 <summary>
 <table>
@@ -354,6 +378,10 @@ Command-line reporting for repository traffic, views, stars, forks, and clones.
 </tbody>
 </table>
 </details>
+</td>
+</tr>
+</tbody>
+</table>
 <!-- PROFILE-SHOWCASE:END -->
 
 ## Current Notes
