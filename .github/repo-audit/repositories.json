@@ -478,6 +478,8 @@
       "owner": "ripred",
       "private": false,
       "skip_badge_kinds": [
+        "python",
+        "code_style",
         "stars",
         "forks"
       ],
