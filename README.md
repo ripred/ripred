@@ -241,7 +241,7 @@ My bespoke repository showcase.
 <summary>
 <picture><img src="https://raw.githubusercontent.com/ripred/BetterMenu/main/docs/menu-builder/assets/icons/bettermenu-library-icon.svg" alt="BetterMenu showcase image" width="48" height="48" align="right"></picture>
 <strong>BetterMenu</strong><br>
-<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+<sub>C++ | Public | Stars: 9 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
