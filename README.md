@@ -33,7 +33,7 @@ My bespoke repository showcase.
 <table>
 <tbody>
 <tr>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-cpuvolt"></a>
 <details>
 <summary>
@@ -55,7 +55,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-smooth"></a>
 <details>
 <summary>
@@ -77,7 +77,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-microchess"></a>
 <details>
 <summary>
@@ -99,9 +99,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-</tr>
-<tr>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-javachess"></a>
 <details>
 <summary>
@@ -123,7 +121,9 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+</tr>
+<tr>
+<td width="25%" valign="top">
 <a id="profile-showcase-ripred-euclid"></a>
 <details>
 <summary>
@@ -145,7 +145,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-profiler"></a>
 <details>
 <summary>
@@ -167,9 +167,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-</tr>
-<tr>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-buttongestures"></a>
 <details>
 <summary>
@@ -191,7 +189,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-cputemp"></a>
 <details>
 <summary>
@@ -213,7 +211,9 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+</tr>
+<tr>
+<td width="25%" valign="top">
 <a id="profile-showcase-reverse-geocache-box"></a>
 <details>
 <summary>
@@ -235,9 +235,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-</tr>
-<tr>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-bettermenu"></a>
 <details>
 <summary>
@@ -259,7 +257,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-bang"></a>
 <details>
 <summary>
@@ -281,7 +279,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-compiletime"></a>
 <details>
 <summary>
@@ -305,7 +303,7 @@ My bespoke repository showcase.
 </td>
 </tr>
 <tr>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-minimax"></a>
 <details>
 <summary>
@@ -327,7 +325,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-tomservo"></a>
 <details>
 <summary>
@@ -349,7 +347,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-arduino-stuff"></a>
 <details>
 <summary>
@@ -371,9 +369,7 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-</tr>
-<tr>
-<td width="33.3333%" valign="top">
+<td width="25%" valign="top">
 <a id="profile-showcase-arduino-project-manager-gpt"></a>
 <details>
 <summary>
@@ -394,12 +390,6 @@ My bespoke repository showcase.
 </tbody>
 </table>
 </details>
-</td>
-<td width="33.3333%" valign="top">
-
-</td>
-<td width="33.3333%" valign="top">
-
 </td>
 </tr>
 </tbody>
