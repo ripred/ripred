@@ -34,50 +34,6 @@ My bespoke repository showcase.
 <tbody>
 <tr>
 <td width="33.3333%" valign="top">
-<a id="profile-showcase-javachess"></a>
-<details>
-<summary>
-<picture><img src="assets/profile-showcase/javachess.svg" alt="JavaChess showcase image" width="48" height="48" align="right"></picture>
-<strong>JavaChess</strong><br>
-<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
-</summary>
-
-<table>
-<tbody>
-<tr>
-<td width="820" valign="top">
-<a href="https://github.com/ripred/JavaChess"><img src="assets/profile-showcase/javachess-details.svg" alt="JavaChess repository details" width="820"></a>
-
-<sub><a href="https://github.com/ripred/JavaChess">Repository</a> | <a href="https://github.com/ripred/JavaChess/issues">Issues</a> | <a href="https://github.com/ripred/JavaChess/actions">Actions</a> | <a href="https://github.com/ripred/JavaChess/releases">Releases</a> | <a href="https://github.com/ripred/JavaChess/blob/master/README.md">README</a></sub>
-</td>
-</tr>
-</tbody>
-</table>
-</details>
-</td>
-<td width="33.3333%" valign="top">
-<a id="profile-showcase-microchess"></a>
-<details>
-<summary>
-<picture><img src="assets/profile-showcase/microchess.svg" alt="MicroChess showcase image" width="48" height="48" align="right"></picture>
-<strong>MicroChess</strong><br>
-<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | Expand / collapse</sub>
-</summary>
-
-<table>
-<tbody>
-<tr>
-<td width="820" valign="top">
-<a href="https://github.com/ripred/MicroChess"><img src="assets/profile-showcase/microchess-details.svg" alt="MicroChess repository details" width="820"></a>
-
-<sub><a href="https://github.com/ripred/MicroChess">Repository</a> | <a href="https://github.com/ripred/MicroChess/issues">Issues</a> | <a href="https://github.com/ripred/MicroChess/actions">Actions</a> | <a href="https://github.com/ripred/MicroChess/releases">Releases</a> | <a href="https://github.com/ripred/MicroChess/blob/main/README.md">README</a> | <a href="https://github.com/ripred/microchess">Homepage</a></sub>
-</td>
-</tr>
-</tbody>
-</table>
-</details>
-</td>
-<td width="33.3333%" valign="top">
 <a id="profile-showcase-cpuvolt"></a>
 <details>
 <summary>
@@ -99,8 +55,6 @@ My bespoke repository showcase.
 </table>
 </details>
 </td>
-</tr>
-<tr>
 <td width="33.3333%" valign="top">
 <a id="profile-showcase-smooth"></a>
 <details>
@@ -117,6 +71,188 @@ My bespoke repository showcase.
 <a href="https://github.com/ripred/Smooth"><img src="assets/profile-showcase/smooth-details.svg" alt="Smooth repository details" width="820"></a>
 
 <sub><a href="https://github.com/ripred/Smooth">Repository</a> | <a href="https://github.com/ripred/Smooth/issues">Issues</a> | <a href="https://github.com/ripred/Smooth/actions">Actions</a> | <a href="https://github.com/ripred/Smooth/releases">Releases</a> | <a href="https://github.com/ripred/Smooth/blob/main/README.md">README</a> | <a href="https://github.com/ripred/Smooth">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-microchess"></a>
+<details>
+<summary>
+<picture><img src="https://raw.githubusercontent.com/ripred/MicroChess/main/MicroChessConsole2.gif" alt="MicroChess showcase image" width="48" height="48" align="right"></picture>
+<strong>MicroChess</strong><br>
+<sub>C++ | Public | Stars: 31 | Forks: 4 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/MicroChess"><img src="assets/profile-showcase/microchess-details.svg" alt="MicroChess repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/MicroChess">Repository</a> | <a href="https://github.com/ripred/MicroChess/issues">Issues</a> | <a href="https://github.com/ripred/MicroChess/actions">Actions</a> | <a href="https://github.com/ripred/MicroChess/releases">Releases</a> | <a href="https://github.com/ripred/MicroChess/blob/main/README.md">README</a> | <a href="https://github.com/ripred/microchess">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+</tr>
+<tr>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-javachess"></a>
+<details>
+<summary>
+<picture><img src="https://raw.githubusercontent.com/ripred/JavaChess/master/color-console-chess.png" alt="JavaChess showcase image" width="48" height="48" align="right"></picture>
+<strong>JavaChess</strong><br>
+<sub>Java | Public | Stars: 16 | Forks: 3 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/JavaChess"><img src="assets/profile-showcase/javachess-details.svg" alt="JavaChess repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/JavaChess">Repository</a> | <a href="https://github.com/ripred/JavaChess/issues">Issues</a> | <a href="https://github.com/ripred/JavaChess/actions">Actions</a> | <a href="https://github.com/ripred/JavaChess/releases">Releases</a> | <a href="https://github.com/ripred/JavaChess/blob/master/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-ripred-euclid"></a>
+<details>
+<summary>
+<picture><img src="https://raw.githubusercontent.com/ripred/ripred-euclid/main/Euclid-Game2.png" alt="ripred-euclid showcase image" width="48" height="48" align="right"></picture>
+<strong>ripred-euclid</strong><br>
+<sub>TypeScript | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/ripred-euclid"><img src="assets/profile-showcase/ripred-euclid-details.svg" alt="ripred-euclid repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/ripred-euclid">Repository</a> | <a href="https://github.com/ripred/ripred-euclid/issues">Issues</a> | <a href="https://github.com/ripred/ripred-euclid/actions">Actions</a> | <a href="https://github.com/ripred/ripred-euclid/releases">Releases</a> | <a href="https://github.com/ripred/ripred-euclid/blob/main/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-profiler"></a>
+<details>
+<summary>
+<picture><img src="assets/profile-showcase/profiler.svg" alt="Profiler showcase image" width="48" height="48" align="right"></picture>
+<strong>Profiler</strong><br>
+<sub>C++ | Public | Stars: 9 | Forks: 2 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/Profiler"><img src="assets/profile-showcase/profiler-details.svg" alt="Profiler repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/Profiler">Repository</a> | <a href="https://github.com/ripred/Profiler/issues">Issues</a> | <a href="https://github.com/ripred/Profiler/actions">Actions</a> | <a href="https://github.com/ripred/Profiler/releases">Releases</a> | <a href="https://github.com/ripred/Profiler/blob/main/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+</tr>
+<tr>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-buttongestures"></a>
+<details>
+<summary>
+<picture><img src="assets/profile-showcase/buttongestures.svg" alt="ButtonGestures showcase image" width="48" height="48" align="right"></picture>
+<strong>ButtonGestures</strong><br>
+<sub>C++ | Public | Stars: 14 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/ButtonGestures"><img src="assets/profile-showcase/buttongestures-details.svg" alt="ButtonGestures repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/ButtonGestures">Repository</a> | <a href="https://github.com/ripred/ButtonGestures/issues">Issues</a> | <a href="https://github.com/ripred/ButtonGestures/actions">Actions</a> | <a href="https://github.com/ripred/ButtonGestures/releases">Releases</a> | <a href="https://github.com/ripred/ButtonGestures/blob/main/README.md">README</a> | <a href="https://github.com/ripred/ButtonGestures">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-cputemp"></a>
+<details>
+<summary>
+<picture><img src="assets/profile-showcase/cputemp.svg" alt="CPUTemp showcase image" width="48" height="48" align="right"></picture>
+<strong>CPUTemp</strong><br>
+<sub>C++ | Public | Stars: 10 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/CPUTemp"><img src="assets/profile-showcase/cputemp-details.svg" alt="CPUTemp repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/CPUTemp">Repository</a> | <a href="https://github.com/ripred/CPUTemp/issues">Issues</a> | <a href="https://github.com/ripred/CPUTemp/actions">Actions</a> | <a href="https://github.com/ripred/CPUTemp/releases">Releases</a> | <a href="https://github.com/ripred/CPUTemp/blob/main/README.md">README</a> | <a href="https://github.com/ripred/CPUTemp">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-reverse-geocache-box"></a>
+<details>
+<summary>
+<picture><img src="https://raw.githubusercontent.com/ripred/Reverse_Geocache_Box/main/exampleImage.png" alt="Reverse_Geocache_Box showcase image" width="48" height="48" align="right"></picture>
+<strong>Reverse_Geocache_Box</strong><br>
+<sub>C++ | Public | Stars: 13 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/Reverse_Geocache_Box"><img src="assets/profile-showcase/reverse-geocache-box-details.svg" alt="Reverse_Geocache_Box repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/Reverse_Geocache_Box">Repository</a> | <a href="https://github.com/ripred/Reverse_Geocache_Box/issues">Issues</a> | <a href="https://github.com/ripred/Reverse_Geocache_Box/actions">Actions</a> | <a href="https://github.com/ripred/Reverse_Geocache_Box/releases">Releases</a> | <a href="https://github.com/ripred/Reverse_Geocache_Box/blob/main/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+</tr>
+<tr>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-bettermenu"></a>
+<details>
+<summary>
+<picture><img src="https://raw.githubusercontent.com/ripred/BetterMenu/main/docs/menu-builder/assets/icons/bettermenu-library-icon.svg" alt="BetterMenu showcase image" width="48" height="48" align="right"></picture>
+<strong>BetterMenu</strong><br>
+<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/BetterMenu"><img src="assets/profile-showcase/bettermenu-details.svg" alt="BetterMenu repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/BetterMenu">Repository</a> | <a href="https://github.com/ripred/BetterMenu/issues">Issues</a> | <a href="https://github.com/ripred/BetterMenu/actions">Actions</a> | <a href="https://github.com/ripred/BetterMenu/releases">Releases</a> | <a href="https://github.com/ripred/BetterMenu/blob/main/README.md">README</a></sub>
 </td>
 </tr>
 </tbody>
@@ -146,10 +282,78 @@ My bespoke repository showcase.
 </details>
 </td>
 <td width="33.3333%" valign="top">
+<a id="profile-showcase-compiletime"></a>
+<details>
+<summary>
+<picture><img src="assets/profile-showcase/compiletime.svg" alt="CompileTime showcase image" width="48" height="48" align="right"></picture>
+<strong>CompileTime</strong><br>
+<sub>C++ | Public | Stars: 7 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/CompileTime"><img src="assets/profile-showcase/compiletime-details.svg" alt="CompileTime repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/CompileTime">Repository</a> | <a href="https://github.com/ripred/CompileTime/issues">Issues</a> | <a href="https://github.com/ripred/CompileTime/actions">Actions</a> | <a href="https://github.com/ripred/CompileTime/releases">Releases</a> | <a href="https://github.com/ripred/CompileTime/blob/main/README.md">README</a> | <a href="htps://guthub.com/ripred/CompileTime">Homepage</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+</tr>
+<tr>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-minimax"></a>
+<details>
+<summary>
+<picture><img src="assets/profile-showcase/minimax.svg" alt="Minimax showcase image" width="48" height="48" align="right"></picture>
+<strong>Minimax</strong><br>
+<sub>C++ | Public | Stars: 4 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/Minimax"><img src="assets/profile-showcase/minimax-details.svg" alt="Minimax repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/Minimax">Repository</a> | <a href="https://github.com/ripred/Minimax/issues">Issues</a> | <a href="https://github.com/ripred/Minimax/actions">Actions</a> | <a href="https://github.com/ripred/Minimax/releases">Releases</a> | <a href="https://github.com/ripred/Minimax/blob/main/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+<td width="33.3333%" valign="top">
+<a id="profile-showcase-tomservo"></a>
+<details>
+<summary>
+<picture><img src="assets/profile-showcase/tomservo.svg" alt="TomServo showcase image" width="48" height="48" align="right"></picture>
+<strong>TomServo</strong><br>
+<sub>C++ | Public | Stars: 16 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+</summary>
+
+<table>
+<tbody>
+<tr>
+<td width="820" valign="top">
+<a href="https://github.com/ripred/TomServo"><img src="assets/profile-showcase/tomservo-details.svg" alt="TomServo repository details" width="820"></a>
+
+<sub><a href="https://github.com/ripred/TomServo">Repository</a> | <a href="https://github.com/ripred/TomServo/issues">Issues</a> | <a href="https://github.com/ripred/TomServo/actions">Actions</a> | <a href="https://github.com/ripred/TomServo/releases">Releases</a> | <a href="https://github.com/ripred/TomServo/blob/main/README.md">README</a></sub>
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</td>
+<td width="33.3333%" valign="top">
 <a id="profile-showcase-arduino-stuff"></a>
 <details>
 <summary>
-<picture><img src="assets/profile-showcase/arduino-stuff.svg" alt="Arduino-Stuff showcase image" width="48" height="48" align="right"></picture>
+<picture><img src="https://user-images.githubusercontent.com/1503156/112012067-d5cdf580-8b63-11eb-819a-1c32cf253b25.png" alt="Arduino-Stuff showcase image" width="48" height="48" align="right"></picture>
 <strong>Arduino-Stuff</strong><br>
 <sub>Mixed | Public | Stars: 3 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
@@ -170,21 +374,21 @@ My bespoke repository showcase.
 </tr>
 <tr>
 <td width="33.3333%" valign="top">
-<a id="profile-showcase-bettermenu"></a>
+<a id="profile-showcase-arduino-project-manager-gpt"></a>
 <details>
 <summary>
-<picture><img src="assets/profile-showcase/bettermenu.svg" alt="BetterMenu showcase image" width="48" height="48" align="right"></picture>
-<strong>BetterMenu</strong><br>
-<sub>C++ | Public | Stars: 8 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
+<picture><img src="assets/profile-showcase/arduino-project-manager-gpt.svg" alt="Arduino-Project-Manager-GPT showcase image" width="48" height="48" align="right"></picture>
+<strong>Arduino-Project-Manager-GPT</strong><br>
+<sub>Python | Public | Stars: 2 | Forks: 1 | Updated: 2026-06-17 | Expand / collapse</sub>
 </summary>
 
 <table>
 <tbody>
 <tr>
 <td width="820" valign="top">
-<a href="https://github.com/ripred/BetterMenu"><img src="assets/profile-showcase/bettermenu-details.svg" alt="BetterMenu repository details" width="820"></a>
+<a href="https://github.com/ripred/Arduino-Project-Manager-GPT"><img src="assets/profile-showcase/arduino-project-manager-gpt-details.svg" alt="Arduino-Project-Manager-GPT repository details" width="820"></a>
 
-<sub><a href="https://github.com/ripred/BetterMenu">Repository</a> | <a href="https://github.com/ripred/BetterMenu/issues">Issues</a> | <a href="https://github.com/ripred/BetterMenu/actions">Actions</a> | <a href="https://github.com/ripred/BetterMenu/releases">Releases</a> | <a href="https://github.com/ripred/BetterMenu/blob/main/README.md">README</a></sub>
+<sub><a href="https://github.com/ripred/Arduino-Project-Manager-GPT">Repository</a> | <a href="https://github.com/ripred/Arduino-Project-Manager-GPT/issues">Issues</a> | <a href="https://github.com/ripred/Arduino-Project-Manager-GPT/actions">Actions</a> | <a href="https://github.com/ripred/Arduino-Project-Manager-GPT/releases">Releases</a> | <a href="https://github.com/ripred/Arduino-Project-Manager-GPT/blob/main/README.md">README</a></sub>
 </td>
 </tr>
 </tbody>
@@ -192,26 +396,7 @@ My bespoke repository showcase.
 </details>
 </td>
 <td width="33.3333%" valign="top">
-<a id="profile-showcase-github-traffic"></a>
-<details>
-<summary>
-<picture><img src="assets/profile-showcase/github-traffic.svg" alt="github-traffic showcase image" width="48" height="48" align="right"></picture>
-<strong>github-traffic</strong><br>
-<sub>Python | Public | Stars: 1 | Forks: 0 | Updated: 2026-06-17 | Expand / collapse</sub>
-</summary>
 
-<table>
-<tbody>
-<tr>
-<td width="820" valign="top">
-<a href="https://github.com/ripred/github-traffic"><img src="assets/profile-showcase/github-traffic-details.svg" alt="github-traffic repository details" width="820"></a>
-
-<sub><a href="https://github.com/ripred/github-traffic">Repository</a> | <a href="https://github.com/ripred/github-traffic/issues">Issues</a> | <a href="https://github.com/ripred/github-traffic/actions">Actions</a> | <a href="https://github.com/ripred/github-traffic/releases">Releases</a> | <a href="https://github.com/ripred/github-traffic/blob/main/README.md">README</a></sub>
-</td>
-</tr>
-</tbody>
-</table>
-</details>
 </td>
 <td width="33.3333%" valign="top">
 
